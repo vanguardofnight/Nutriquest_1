@@ -12,9 +12,9 @@ difficulty level of 60 means the water level will deplete every 1 second
 */
 
 /*debugging purpose, remove later*/
-var ScoreTextPosition : Rect = Rect(0, 0, 256, 128);
+var TextPosition : Rect = Rect(0, 0, 256, 128);
 var style : GUIStyle;
-var ScoreText = "water:  ";
+var Text = "water:  ";
 
 
 function Start () {
@@ -71,7 +71,7 @@ function depleteWater(){
 /*debugging purpose, remove this function later */
 function OnGUI()
 {
-	GUI.Label(ScoreTextPosition, ScoreText, style);
+	GUI.Label(TextPosition, Text, style);
 }
 
 
@@ -84,8 +84,8 @@ function Update () {
 		else {
 			framecount = framecount + 1;
 		}
-		ScoreText = "water level: " + water + "\nstrength: "+ strength + 
+		Text = "water level: " + water + "\nstrength: "+ strength + 
 		"\nweight = " + weight;
 		//debugging purposes, remove later
-		GUI.Label(ScoreTextPosition, ScoreText, style);
+		GUI.Label(TextPosition, Text, style);
 }

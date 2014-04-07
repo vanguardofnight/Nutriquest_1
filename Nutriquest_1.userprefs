@@ -1,11 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\deathofplayerscript.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\deathofplayerscript.js">
     <Files>
       <File FileName="Assets\Scripts\SidescrollControl.js" Line="30" Column="33" />
-      <File FileName="Assets\Scripts\AttributeScript.js" Line="12" Column="2" />
-      <File FileName="Assets\Scripts\fallingBlock.js" Line="11" Column="46" />
-      <File FileName="Assets\deathofplayerscript.js" Line="6" Column="1" />
+      <File FileName="Assets\Scripts\AttributeScript.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\fallingBlock.js" Line="1" Column="1" />
+      <File FileName="Assets\deathofplayerscript.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\deathofplayerscript.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
