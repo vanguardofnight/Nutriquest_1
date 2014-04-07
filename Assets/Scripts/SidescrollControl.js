@@ -27,6 +27,7 @@ public var breakPowerup = false;
 
 private var thisTransform : Transform;
 private var character : CharacterController;
+private var sound : AudioSource;
 private var velocity : Vector3;						// Used for continuing momentum while in air
 private var canJump = true;
 private var internalSpeedMod : float = 1;
@@ -36,7 +37,7 @@ function Start()
 	// Cache component lookup at startup instead of doing this every frame		
 	thisTransform = GetComponent( Transform );
 	character = GetComponent( CharacterController );
-	//sound = GetComponent( AudioSource);	
+	sound = GetComponent( AudioSource);	
 
 	// Move the character to the correct start position in the level, if one exists
 	var spawn = GameObject.Find( "PlayerSpawn" );
@@ -105,7 +106,7 @@ function Update()
 		
 		if ( jump )
 		{
-			//sound.Play();
+			sound.Play();
 			// Apply the current movement to launch velocity		
 			//velocity = character.velocity;
 			velocity.y = jumpSpeed;		

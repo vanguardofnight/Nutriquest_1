@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{FD36ABBB-6C99-C207-51E1-F5C532D61DBC}</ProjectGuid>
+	<ProjectGuid>{26CB1A82-3990-0D3C-959A-93D938E14DE4}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -48,12 +48,16 @@
   <ItemGroup>
      <Compile Include="Assets\AnimScript.js" />
      <Compile Include="Assets\GravityScript.js" />
+     <Compile Include="Assets\Scripts\AttributeScript.js" />
      <Compile Include="Assets\Scripts\Score.js" />
      <Compile Include="Assets\Scripts\SidescrollControl.js" />
+     <Compile Include="Assets\Scripts\deathofplayerscript.js" />
+     <Compile Include="Assets\Scripts\fallingBlock.js" />
+     <Compile Include="Assets\Scripts\gameoverscript.js" />
+     <Compile Include="Assets\Scripts\waterBlock.js" />
      <Compile Include="Assets\audiobutton.js" />
      <Compile Include="Assets\bioharnessbutton.js" />
      <Compile Include="Assets\buttonRender.js" />
-     <Compile Include="Assets\deathofplayerscript.js" />
      <Compile Include="Assets\generateOptions.js" />
      <Compile Include="Assets\lvl1button.js" />
      <Compile Include="Assets\lvl2button.js" />

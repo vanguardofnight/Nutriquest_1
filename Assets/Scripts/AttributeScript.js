@@ -22,6 +22,20 @@ function Start () {
 	style.normal.textColor = Color.white;
 }
 
+function OnTriggerEnter(other : Collider)
+{
+	if(other.tag == "Water")
+	{
+		water += 10;
+		Destroy(other.gameObject);
+	}
+	if(other.tag == "Weight")
+	{
+		incrementWeight();
+		Destroy(other.gameObject);
+	}
+}
+
 function incrementWeight(){
 	weight = weight + 1;
 }
@@ -64,10 +78,11 @@ function OnGUI()
 function Update () {
 	/*decrement water level at a constant rate during gameplay */
 		if(framecount == difficulty){
-		depleteWater();
-		framecount = 0;
-	} else {
-		framecount = framecount + 1;
+			depleteWater();
+			framecount = 0;
+		} 
+		else {
+			framecount = framecount + 1;
 		}
 		ScoreText = "water level: " + water + "\nstrength: "+ strength + 
 		"\nweight = " + weight;
