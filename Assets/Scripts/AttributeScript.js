@@ -26,7 +26,7 @@ function OnTriggerEnter(other : Collider)
 {
 	if(other.tag == "Water")
 	{
-		water += 10;
+		refillWater();
 		Destroy(other.gameObject);
 	}
 	if(other.tag == "Weight")
@@ -85,7 +85,7 @@ function Update () {
 			framecount = framecount + 1;
 		}
 		Text = "water level: " + water + "\nstrength: "+ strength + 
-		"\nweight = " + weight;
+		"\nweight = " + weight + "\nframecount = " + framecount;
 		//debugging purposes, remove later
 		GUI.Label(TextPosition, Text, style);
 }
