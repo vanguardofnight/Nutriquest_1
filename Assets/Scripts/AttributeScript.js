@@ -5,6 +5,7 @@ var weight : int = 1;
 var water : int = 10; //player's water level, will also be used to size water bar
 var framecount = 0; //used to only decrement water in specific intervals
 var difficulty = 30;
+var fruit = 0;
 /*difficulty is a parameter that is inversely proportional to the 
 speed at which the water depletes. For example: a difficulty setting of 
 120 means that the water level for the player will decrease every 2 seconds, but a 
@@ -29,7 +30,7 @@ function OnTriggerEnter(other : Collider)
 		refillWater();
 		Destroy(other.gameObject);
 	}
-	if(other.tag == "Weight")
+	if(other.tag == "JunkFood")
 	{
 		incrementWeight();
 		Destroy(other.gameObject);
@@ -37,6 +38,16 @@ function OnTriggerEnter(other : Collider)
 	if(other.tag == "FallBlock"){
 		var fallblockscript: fallingBlock = other.GetComponent(fallingBlock);
 		fallblockscript.switchOnGravity(weight);
+	}
+	
+	if(other.tag == "Dairy"){
+		incrementStrength();
+		Destroy(other.gameObject);
+	}
+	
+	if( other.tag == "Fruit"){
+		incrementFruit();
+		Destroy(other.gameObject);
 	}
 }
 
@@ -62,6 +73,11 @@ function refillWater(){
 
 function getWater(){
 	return water;
+}
+
+function incrementFruit(){
+	fruit = fruit + 1;
+	
 }
 
 function depleteWater(){
