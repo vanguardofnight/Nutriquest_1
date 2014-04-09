@@ -34,6 +34,10 @@ function OnTriggerEnter(other : Collider)
 		incrementWeight();
 		Destroy(other.gameObject);
 	}
+	if(other.tag == "FallBlock"){
+		var fallblockscript: fallingBlock = other.GetComponent(fallingBlock);
+		fallblockscript.switchOnGravity(weight);
+	}
 }
 
 function incrementWeight(){

@@ -59,6 +59,8 @@ function OnTriggerEnter(other : Collider)
 		backwardSpeed = 16;
 		Destroy(other.gameObject);
 	}
+	
+	
 }
 
 function OnEndGame()
