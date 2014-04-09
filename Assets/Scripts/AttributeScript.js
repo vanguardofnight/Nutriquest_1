@@ -2,7 +2,8 @@
 
 var strength : int = 1;
 var weight : int = 1;
-var water : int = 10; //player's water level, will also be used to size water bar
+static var MAX_WATER: int = 15;
+var water : int = MAX_WATER; //player's water level, will also be used to size water bar
 var framecount = 0; //used to only decrement water in specific intervals
 var difficulty = 30;
 var fruit = 0;
@@ -68,7 +69,10 @@ function getStrength(){
 }
 
 function refillWater(){
-	water = 10;
+	water = MAX_WATER;
+	var watergauge: GameObject = GameObject.Find("waterlevel");
+	var watergaugescript : watergaugescript = watergauge.GetComponent(watergaugescript);
+	watergaugescript.resize(water, MAX_WATER);
 }
 
 function getWater(){
@@ -83,6 +87,9 @@ function incrementFruit(){
 function depleteWater(){
 		Debug.Log(water);
 		water = getWater()- 1;
+		var watergauge: GameObject = GameObject.Find("waterlevel");
+		var watergaugescript : watergaugescript = watergauge.GetComponent(watergaugescript);
+		watergaugescript.resize(water, MAX_WATER);
 		if(water <= 0){
 			Application.LoadLevel("gameover");
 		}

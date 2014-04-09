@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\fallingBlock.js" />
      <Compile Include="Assets\Scripts\gameoverscript.js" />
      <Compile Include="Assets\Scripts\waterBlock.js" />
+     <Compile Include="Assets\Scripts\watergaugescript.js" />
      <Compile Include="Assets\audiobutton.js" />
      <Compile Include="Assets\bioharnessbutton.js" />
      <Compile Include="Assets\buttonRender.js" />
