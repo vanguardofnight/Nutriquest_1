@@ -8,8 +8,9 @@ function Start()
 }
 
 function OnMouseDown(){
+	/* Uncomment this before extracting Unity Android Project 
 	control.connect();
-	control.SetRespirationRate(control.GetRespirationRate() + 1);
+	*/
 }
 
 function OnGUI()
