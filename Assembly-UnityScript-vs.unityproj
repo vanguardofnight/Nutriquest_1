@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\deathofplayerscript.js" />
      <Compile Include="Assets\Scripts\fallingBlock.js" />
      <Compile Include="Assets\Scripts\gameoverscript.js" />
+     <Compile Include="Assets\Scripts\mainmenu.js" />
      <Compile Include="Assets\Scripts\settings.js" />
      <Compile Include="Assets\Scripts\waterBlock.js" />
      <Compile Include="Assets\Scripts\watergaugescript.js" />
@@ -67,9 +68,6 @@
      <Compile Include="Assets\lvl4button.js" />
      <Compile Include="Assets\lvlscreen.js" />
      <Compile Include="Assets\lvlselectbutton.js" />
-     <Compile Include="Assets\mainmenubutton.js" />
-     <Compile Include="Assets\newgamebutton.js" />
-     <Compile Include="Assets\optionsbutton.js" />
      <Compile Include="Assets\standard assets (mobile)\Scripts\CameraRelativeControl.js" />
      <Compile Include="Assets\standard assets (mobile)\Scripts\FirstPersonControl.js" />
      <Compile Include="Assets\standard assets (mobile)\Scripts\FollowTransform.js" />
