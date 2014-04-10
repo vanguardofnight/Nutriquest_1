@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/bioharnessbutton.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BioHarnessController.js">
     <Files>
-      <File FileName="Assets/Scripts/BioHarnessController.js" Line="4" Column="2" />
-      <File FileName="Assets/bioharnessbutton.js" Line="9" Column="2" />
+      <File FileName="Assets/Scripts/BioHarnessController.js" Line="18" Column="23" />
+      <File FileName="Assets/bioharnessbutton.js" Line="4" Column="18" />
+      <File FileName="Assets/Scripts/AttributeScript.js" Line="2" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
