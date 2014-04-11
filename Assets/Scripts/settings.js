@@ -12,15 +12,15 @@ function Start()
 
 function OnMouseDown(){
 	if(gameObject.name == "Connect_Texture") {
-		Debug.Log("CT");
+//		Debug.Log("CT");
 		control.connect();
 	}	
 	if(gameObject.name == "Disconnect_Texture") {
-		Debug.Log("DT");
+//		Debug.Log("DT");
 		control.disconnect();
 	}
 	if(gameObject.name == "Mainmenu_Texture") {
-		Debug.Log("MT");
+//		Debug.Log("MT");
 		Application.LoadLevel("intro");
 	}
 }
