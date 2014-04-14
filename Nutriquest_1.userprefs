@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MenuScreen.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/mainmenu.js">
     <Files>
-      <File FileName="Assets/MenuScreen.cs" Line="22" Column="21" />
+      <File FileName="Assets/Scripts/settings.js" Line="22" Column="74" />
+      <File FileName="Assets/Scripts/mainmenu.js" Line="11" Column="22" />
+      <File FileName="Assets/Scripts/lvlselect.js" Line="10" Column="70" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
