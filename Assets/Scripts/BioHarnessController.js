@@ -78,7 +78,6 @@ function GetPeakAcceleration() : String {
 	return peakAcceleration;
 }
 
-//Uncomment this before extracting Unity Android Project 
 function connect(){
 		curActivity.Call("connect");
 }

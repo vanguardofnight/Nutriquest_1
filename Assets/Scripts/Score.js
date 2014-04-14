@@ -17,6 +17,7 @@ function OnTriggerEnter(other : Collider)
 		ScoreText = "Score: " + PlayerScore;
 		Destroy(other.gameObject);
 	}
+	Debug.Log(other.gameObject.name);
 }
  
 function Update()

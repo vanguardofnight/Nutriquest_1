@@ -11,15 +11,15 @@ function Start()
 }
 
 function OnMouseDown(){
-	if(gameObject.name == "Connect_Texture") {
+	if(gameObject.name == "Connect_Texture" || gameObject.name == "Connect_Txt") {
 //		Debug.Log("CT");
 		control.connect();
 	}	
-	if(gameObject.name == "Disconnect_Texture") {
+	if(gameObject.name == "Disconnect_Texture" || gameObject.name == "Disconnect_Txt") {
 //		Debug.Log("DT");
 		control.disconnect();
 	}
-	if(gameObject.name == "Mainmenu_Texture") {
+	if(gameObject.name == "Mainmenu_Texture" || gameObject.name == "Mainmenu_Txt") {
 //		Debug.Log("MT");
 		Application.LoadLevel("intro");
 	}
