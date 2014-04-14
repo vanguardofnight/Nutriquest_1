@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/mainmenu.js">
     <Files>
+      <File FileName="Assets/Scripts/FoodGenerator.js" Line="77" Column="17" />
       <File FileName="Assets/Scripts/settings.js" Line="22" Column="74" />
-      <File FileName="Assets/Scripts/mainmenu.js" Line="11" Column="22" />
+      <File FileName="Assets/Scripts/mainmenu.js" Line="10" Column="4" />
       <File FileName="Assets/Scripts/lvlselect.js" Line="10" Column="70" />
     </Files>
   </MonoDevelop.Ide.Workbench>
