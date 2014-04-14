@@ -7,7 +7,7 @@ function Start () {
 function OnTriggerEnter(other : Collider) {
 	if( other.tag == "Player")
 	{
-		Destroy(other.gameObject);
+//		Destroy(other.gameObject);
 		Application.LoadLevel("gameover");
 	}
 }

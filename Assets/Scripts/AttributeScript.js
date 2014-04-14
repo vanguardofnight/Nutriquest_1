@@ -90,9 +90,9 @@ function depleteWater(){
 		var watergauge: GameObject = GameObject.Find("waterlevel");
 		var watergaugescript : watergaugescript = watergauge.GetComponent(watergaugescript);
 		watergaugescript.resize(water, MAX_WATER);
-		if(water <= 0){
-			Application.LoadLevel("gameover");
-		}
+//		if(water <= 0){
+//			Application.LoadLevel("gameover");
+//		}
 	
 }
 /*debugging purpose, remove this function later */
