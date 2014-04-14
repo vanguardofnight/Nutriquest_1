@@ -50,6 +50,7 @@
      <Compile Include="Assets\GravityScript.js" />
      <Compile Include="Assets\Scripts\AttributeScript.js" />
      <Compile Include="Assets\Scripts\BioHarnessController.js" />
+     <Compile Include="Assets\Scripts\PlayerControl.js" />
      <Compile Include="Assets\Scripts\Score.js" />
      <Compile Include="Assets\Scripts\SidescrollControl.js" />
      <Compile Include="Assets\Scripts\deathofplayerscript.js" />
@@ -60,7 +61,6 @@
      <Compile Include="Assets\Scripts\settings.js" />
      <Compile Include="Assets\Scripts\waterBlock.js" />
      <Compile Include="Assets\Scripts\watergaugescript.js" />
-     <Compile Include="Assets\audiobutton.js" />
      <Compile Include="Assets\buttonRender.js" />
      <Compile Include="Assets\generateOptions.js" />
      <Compile Include="Assets\standard assets (mobile)\Scripts\CameraRelativeControl.js" />
