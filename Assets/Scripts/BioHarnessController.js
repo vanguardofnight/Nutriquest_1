@@ -11,6 +11,11 @@ private static var skinTemperature : String;
 private static var posture : String;
 private static var peakAcceleration : String;
 
+private static var normalRate : float = 16.0;
+private static var rates = new Array();
+private static var std: float;
+private static var avg: float;
+
 function Start(){
 	/* Uncomment this before extracting Unity Android Project 
 	var jc : AndroidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
@@ -29,6 +34,34 @@ function Awake(){
  		Destroy(this.gameObject);
  	}
 }
+
+function InitRecord() {
+	rates.clear();
+}
+
+function Record(str : String){
+	rates.Push(parseFloat(str));
+}
+
+function calcAvg(){
+	var sum : float = 0;
+	for (var v : float in rates){
+		sum += parseFloat(v);
+	}
+	
+	avg = sum / rates.length;
+} 
+
+function calcStd() {
+	var variance : float = 0;
+	
+	for (var v: float in rates) {
+		variance += Mathf.Pow( (v-avg), 2.0);
+	}
+	
+	std = Mathf.Pow((variance/rates.length),0.5);
+}
+
 
 function SetLog(str : String) {
 	this.strLog = str;
@@ -72,6 +105,14 @@ function GetSkinTemperature() : String {
 
 function GetPosture() : String {
 	return posture;
+}
+
+function GetAvg() : float {
+	return avg;
+}
+
+function GetStd() : float {
+	return std;
 }
 
 function GetPeakAcceleration() : String {

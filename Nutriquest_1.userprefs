@@ -1,14 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AttributeScript.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/standard assets (mobile)/Scripts/Joystick.js">
     <Files>
-      <File FileName="Assets/Scripts/FoodGenerator.js" Line="53" Column="33" />
-      <File FileName="Assets/Scripts/settings.js" Line="22" Column="74" />
       <File FileName="Assets/Scripts/lvlselect.js" Line="10" Column="70" />
-      <File FileName="Assets/Scripts/AttributeScript.js" Line="92" Column="2" />
-      <File FileName="Assets/Scripts/Score.js" Line="30" Column="2" />
-      <File FileName="Assets/standard assets (mobile)/Scripts/SmoothFollow2D.js" Line="15" Column="2" />
-      <File FileName="Assets/Scripts/watergaugescript.js" Line="17" Column="43" />
+      <File FileName="Assets/Scripts/BioHarnessController.js" Line="43" Column="12" />
+      <File FileName="Assets/standard assets (mobile)/Scripts/Joystick.js" Line="18" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
