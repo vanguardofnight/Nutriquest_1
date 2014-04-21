@@ -39,6 +39,7 @@ function OnTriggerEnter(other : Collider)
 	if(other.tag == "FallBlock"){
 		var fallblockscript: fallingBlock = other.GetComponent(fallingBlock);
 		fallblockscript.switchOnGravity(weight);
+		
 	}
 	
 	if(other.tag == "Dairy"){
@@ -48,14 +49,6 @@ function OnTriggerEnter(other : Collider)
 	
 	if( other.tag == "Fruit"){
 		incrementFruit();
-		Destroy(other.gameObject);
-	}
-	
-	if( other.tag == "Grain"){
-		Destroy(other.gameObject);
-	}
-	
-	if( other.tag == "Protein"){
 		Destroy(other.gameObject);
 	}
 }

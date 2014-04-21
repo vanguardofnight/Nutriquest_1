@@ -1,7 +1,7 @@
 ﻿#pragma strict
 
 function Start () {
-	
+	gameObject.rigidbody.constraints = RigidbodyConstraints.FreezeAll;	
 }
 
 /*function OnTriggerEnter(other : Collider) {
@@ -21,9 +21,10 @@ function Start () {
 
 function switchOnGravity(delay : int){
 	var tdelay : float = 4 / delay;
-		Debug.Log(tdelay);
-	yield WaitForSeconds(tdelay);
-	gameObject.rigidbody.useGravity = true;
+		Debug.Log("entered function" + tdelay);
+	//yield WaitForSeconds(5.0);
+	//gameObject.rigidbody.useGravity = true;
+	gameObject.rigidbody.constraints = RigidbodyConstraints.None;
 }
 function Update () {
 	
