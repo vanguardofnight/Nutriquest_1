@@ -35,13 +35,5 @@ function OnTriggerEnter(other : Collider)
 		PlayerScore += 1;
 	}
 	
-	if( other.tag == "Grain"){
-		Destroy(other.gameObject);
-		PlayerScore += 1;
-	}
 	
-	if( other.tag == "Protein"){
-		Destroy(other.gameObject);
-		PlayerScore += 1;
-	}
 }

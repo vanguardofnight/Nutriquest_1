@@ -1,11 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/mainmenu.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AttributeScript.js">
     <Files>
-      <File FileName="Assets/Scripts/FoodGenerator.js" Line="77" Column="17" />
+      <File FileName="Assets/Scripts/FoodGenerator.js" Line="53" Column="33" />
       <File FileName="Assets/Scripts/settings.js" Line="22" Column="74" />
-      <File FileName="Assets/Scripts/mainmenu.js" Line="10" Column="4" />
       <File FileName="Assets/Scripts/lvlselect.js" Line="10" Column="70" />
+      <File FileName="Assets/Scripts/AttributeScript.js" Line="92" Column="2" />
+      <File FileName="Assets/Scripts/Score.js" Line="30" Column="2" />
+      <File FileName="Assets/standard assets (mobile)/Scripts/SmoothFollow2D.js" Line="15" Column="2" />
+      <File FileName="Assets/Scripts/watergaugescript.js" Line="17" Column="43" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

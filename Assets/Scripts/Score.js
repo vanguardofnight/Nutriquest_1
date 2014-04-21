@@ -14,14 +14,34 @@ function OnTriggerEnter(other : Collider)
 	if(other.tag == "Point")
 	{
 		PlayerScore += 1;
-		ScoreText = "Score: " + PlayerScore;
 		Destroy(other.gameObject);
 	}
+	if(other.tag == "Dairy"){
+		PlayerScore +=1;
+	}
+	
+	if( other.tag == "Fruit"){
+		PlayerScore +=1;
+	}
+	
+	if( other.tag == "Grain"){
+		PlayerScore += 1;
+	}
+	
+	if( other.tag == "Protein"){
+		PlayerScore += 1;
+	}
+	
+	if( other.tag == "JunkFood"){
+		PlayerScore += 1;
+	}
+	
 	Debug.Log(other.gameObject.name);
 }
  
 function Update()
 {
+	ScoreText = "Score: " + PlayerScore;
 	GUI.Label(ScoreTextPosition, ScoreText, style);
 }
  
