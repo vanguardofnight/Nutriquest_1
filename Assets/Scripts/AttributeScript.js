@@ -51,6 +51,10 @@ function OnTriggerEnter(other : Collider)
 		incrementFruit();
 		Destroy(other.gameObject);
 	}
+	
+	if( other.tag == "Grain"){
+		Destroy(other.gameObject);
+	}
 }
 
 function incrementWeight(){

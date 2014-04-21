@@ -1,4 +1,6 @@
-﻿#pragma strict
+﻿var bioHarness : GameObject;
+var control : BioHarnessController;
+var durationMultiplier : float = 1;
 
 var maxTimer : int = 10;
 // Timers for respawning 6 food items
@@ -12,6 +14,11 @@ var arr_objects : GameObject[];
 var arr_prefabs : String[];
 
 function Start () {
+	/* Uncomment this before extracting Unity Android Project 
+	bioHarness = GameObject.Find("BioHarness");
+	control = bioHarness.GetComponent(typeof(BioHarnessController));
+	*/
+
 	arr_timers = new int[6];
 	arr_maxTimers = new int[6];
 	
@@ -51,7 +58,10 @@ function CountDown (){
 			}
 			arr_timers[i]--;
 		} else if(arr_timers[i] <= 0){
-			arr_maxTimers[i] = Random.Range(5, maxTimer);
+			/*
+			var localTimer : float = maxTimer * control.GetStd() / control.GetAvg();
+			*/
+			arr_maxTimers[i] = Random.Range(5, maxTimer); // ,(localTimer);
 			arr_timers[i] = arr_maxTimers[i];
 			if(arr_objects[i] != null) {
 				Destroy(arr_objects[i]);		
