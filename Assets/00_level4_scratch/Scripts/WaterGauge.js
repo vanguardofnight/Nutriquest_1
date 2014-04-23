@@ -1,6 +1,4 @@
-﻿#pragma strict
-
-private var defaultScale = 1;
+﻿private var defaultScale = 1;
 
 function Start () {
 	defaultScale = transform.localScale.x;

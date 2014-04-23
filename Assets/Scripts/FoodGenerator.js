@@ -12,6 +12,7 @@ var arr_objects : GameObject[];
 
 // Stored prefab names
 var arr_prefabs : String[];
+var spots : GameObject[];
 
 function Start () {
 	/* Uncomment this before extracting Unity Android Project 

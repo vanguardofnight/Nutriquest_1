@@ -5,16 +5,19 @@ private static var created : boolean = false;
 private var curActivity : AndroidJavaObject;
 
 private static var strLog : String;
-private static var heartRate : String;
-private static var respirationRate : String;
-private static var skinTemperature : String;
-private static var posture : String;
-private static var peakAcceleration : String;
+private static var heartRate : String = "0";
+private static var respirationRate : String = "0";
+private static var skinTemperature : String = "0";
+private static var posture : String = "0";
+private static var peakAcceleration : String = "0";
 
 private static var normalRate : float = 16.0;
 private static var rates = new Array();
-private static var std: float;
-private static var avg: float;
+private static var std: float = 0;
+private static var avg: float = 0;
+
+var connected : boolean = false;
+private var timer : float;
 
 function Start(){
 	/* Uncomment this before extracting Unity Android Project 
@@ -23,6 +26,7 @@ function Start(){
 	// What's differnent from C#: add '.' between GetStatic and <>.
 	curActivity = jc.GetStatic.<AndroidJavaObject>("currentActivity");		
 	*/
+	timer = Time.time;
 	strLog = "Initialized";
 }
 
@@ -35,21 +39,34 @@ function Awake(){
  	}
 }
 
+function OnConnected ( str : String ) {
+	connected = true;
+}
+
+function OnDisconnected ( str: String) {
+	connected = false;
+}
+
 function InitRecord() {
+	std = 0;
+	avg = 0;
 	rates.clear();
 }
 
 function Record(str : String){
-	rates.Push(parseFloat(str));
+	if ((timer + 1.5) < Time.time) {
+		rates.Push( parseFloat(str) );
+	}
 }
 
 function calcAvg(){
-	var sum : float = 0;
-	for (var v : float in rates){
-		sum += parseFloat(v);
+	if (rates.length > 0) {
+		var sum : float = 0;
+		for (var v : float in rates){
+			sum += parseFloat(v);
+		}
+		avg = sum / rates.length;
 	}
-	
-	avg = sum / rates.length;
 } 
 
 function calcStd() {
@@ -108,11 +125,17 @@ function GetPosture() : String {
 }
 
 function GetAvg() : float {
+	calcAvg();
 	return avg;
 }
 
 function GetStd() : float {
+	calcStd();
 	return std;
+}
+
+function IsConnected() : boolean {
+	return connected;
 }
 
 function GetPeakAcceleration() : String {

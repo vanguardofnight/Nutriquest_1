@@ -3,7 +3,7 @@ private var controller : CharacterController;
 var speed 			: float = 8.0;
 var jumpSpeed 		: float = 15.0;
 var gravity 		: float = 20.0;
-var velocity : Vector3 = Vector3.zero;
+var velocity 		: Vector3 = Vector3.zero;
 var moveDirection 	: int = 0;
 
 // Sound effect variables

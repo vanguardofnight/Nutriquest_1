@@ -86,7 +86,6 @@ function getWater(){
 
 function incrementFruit(){
 	fruit = fruit + 1;
-	
 }
 
 function depleteWater(){

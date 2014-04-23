@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\00_level4_scratch\Scripts\CameraSmoothFollower.js" />
      <Compile Include="Assets\00_level4_scratch\Scripts\ChangeNumber.js" />
+     <Compile Include="Assets\00_level4_scratch\Scripts\FoodGeratorV2.js" />
      <Compile Include="Assets\00_level4_scratch\Scripts\PlayerControl.js" />
      <Compile Include="Assets\00_level4_scratch\Scripts\PlayerProperties.js" />
      <Compile Include="Assets\00_level4_scratch\Scripts\WaterGauge.js" />

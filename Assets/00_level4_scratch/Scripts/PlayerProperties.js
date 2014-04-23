@@ -15,14 +15,29 @@ var dairy			: int = 0;
 private var endTime : float;
 private var waterTimer : float = 2.0;
 
-function start () {
+// BioHarness
+private var bioHarness : GameObject;
+private var bioControl : BioHarnessController;
+
+function Start () {
+	// BioHanress Setup
+	bioHarness = GameObject.Find( "BioHarness" );
+	bioControl = bioHarness.GetComponent( BioHarnessController );
+	bioControl.InitRecord();
+	
+	// Timer for water comsumption
 	endTime = Time.time + waterTimer;
 }
 
 function Update () {
 	// From respirationRate from BioHarness
-	var respirationRate = float.Parse("26.1110");
-
+	var respirationRate : float;
+	
+	if(bioControl.IsConnected())
+	 	respirationRate = float.Parse(bioControl.GetRespirationRate());
+ 	else
+	 	respirationRate = 16.5;
+	
 	// Hud updates
 	var waterGauge = GameObject.Find("WaterLevel").GetComponent( WaterGauge );	
 	waterGauge.Resize (water, MAX_WATER);
@@ -43,9 +58,9 @@ function Update () {
 		water -= 1;
 		endTime = Time.time + waterTimer;
 	}
-//	if(water <= 0){
-//		Application.LoadLevel("gameover");
-//	}
+	if(water <= 0){
+		Application.LoadLevel("gameover");
+	}
 }
 
 function OnTriggerEnter( other : Collider ) {
