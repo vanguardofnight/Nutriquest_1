@@ -1,6 +1,6 @@
 ﻿var durationMultiplier 	: float = 1;
-var maxTimer 			: int = 15;
-var minTimer			: int = 5;
+var maxTimer 			: int = 20;
+var minTimer			: int = 10;
 
 // XY Coordinates for sections
 // x: minX, y: maxX, z: minY, w: maxY
@@ -71,14 +71,19 @@ function CountDown (){
 			}
 			arr_timers[i]--;
 		} else if(arr_timers[i] <= 0){
-			// Std from BioHarness
 			var localTimer : float;
 			if ( bioControl.IsConnected() ) {
-				var std = bioControl.GetStd();
-				if ( std < 2 )
-					localTimer = maxTimer * 1.5;
-				else if ( std < 4 )
+				var rRate = float.Parse(bioControl.GetRespirationRate());
+				if ( Mathf.Abs(rRate - 6) < 1 )
 					localTimer = maxTimer;
+				else if ( Mathf.Abs(rRate - 6) < 2 )
+					localTimer = maxTimer - maxTimer * 0.1;
+				else if ( Mathf.Abs(rRate - 6) < 3 )
+					localTimer = maxTimer - maxTimer * 0.2;
+				else if ( Mathf.Abs(rRate - 6) < 4 )
+					localTimer = maxTimer - maxTimer * 0.3;
+				else if ( Mathf.Abs(rRate - 6) < 5 )
+					localTimer = maxTimer - maxTimer * 0.4;
 				else
 					localTimer = maxTimer * 0.5;
 			} else {

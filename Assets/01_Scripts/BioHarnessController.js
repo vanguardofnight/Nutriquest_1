@@ -16,16 +16,19 @@ private static var rates = new Array();
 private static var std: float = 0;
 private static var avg: float = 0;
 
-var connected : boolean = false;
+var bhEnabled : boolean;
+var connected : boolean;
+
 private var timer : float;
 
 function Start(){
-//	/* Uncomment this before extracting Unity Android Project 
-//	var jc : AndroidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+	bhEnabled = true;
+	if (bhEnabled) {
+		var jc : AndroidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+		// What's differnent from C#: add '.' between GetStatic and <>.
+		curActivity = jc.GetStatic.<AndroidJavaObject>("currentActivity");		
+	}
 	
-	// What's differnent from C#: add '.' between GetStatic and <>.
-//	curActivity = jc.GetStatic.<AndroidJavaObject>("currentActivity");		
-//	*/
 	timer = Time.time;
 	strLog = "Initialized";
 }
@@ -53,9 +56,10 @@ function InitRecord() {
 	rates.clear();
 }
 
-function Record(str : String){
-	if ((timer + 1.5) < Time.time) {
+function Record ( str : String ){
+	if ((timer + 2) < Time.time) {
 		rates.Push( parseFloat(str) );
+		timer = Time.time;
 	}
 }
 
@@ -79,6 +83,23 @@ function calcStd() {
 	std = Mathf.Pow((variance/rates.length),0.5);
 }
 
+function Calc() {
+	calcAvg();
+	calcStd();
+	Debug.Log('avg: ' + avg);
+	Debug.Log('std: ' + std);
+}
+
+function GetAvg() : float {
+	Calc();
+	return avg;
+}
+
+function GetStd() : float {
+	Calc();
+	return std;
+}
+
 
 function SetLog(str : String) {
 	this.strLog = str;
@@ -90,6 +111,7 @@ function SetHeartRate(str : String) {
 
 function SetRespirationRate(str : String) {
 	this.respirationRate = str;
+	Record ( str );
 }
 
 function SetSkinTemperature(str : String) {
@@ -122,16 +144,6 @@ function GetSkinTemperature() : String {
 
 function GetPosture() : String {
 	return posture;
-}
-
-function GetAvg() : float {
-	calcAvg();
-	return avg;
-}
-
-function GetStd() : float {
-	calcStd();
-	return std;
 }
 
 function IsConnected() : boolean {

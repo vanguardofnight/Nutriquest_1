@@ -26,7 +26,6 @@ function OnMouseDown(){
 function OnGUI()
 {
 	if(gameObject.name == "Log_Txt") {
-		this.guiText.text = "- System Log: ";
-//		this.guiText.text = "- System Log: " + control.GetLog();
+		this.guiText.text = "- System Log: " + control.GetLog();
 	}
 }

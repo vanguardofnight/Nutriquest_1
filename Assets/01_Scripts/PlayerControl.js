@@ -25,13 +25,13 @@ function Start() {
 
 function PlaySound ( soundName, soundDelay : float )
 {
-		if ( !audio.isPlaying && Time.time > soundRate )
-		{
-			soundRate = soundDelay + Time.time;
-			audio.clip = soundName;
-			audio.Play();
-			yield WaitForSeconds( audio.clip.length );
-		}
+	if ( !audio.isPlaying && Time.time > soundRate )
+	{
+		soundRate = soundDelay + Time.time;
+		audio.clip = soundName;
+		audio.Play();
+		yield WaitForSeconds( audio.clip.length );
+	}
 }
 
 function Update() {	
