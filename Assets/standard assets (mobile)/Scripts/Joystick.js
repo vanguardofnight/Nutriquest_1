@@ -54,7 +54,7 @@ function Start()
 	// Store the default rect for the gui, so we can snap back to it
 	defaultRect = gui.pixelInset;	
     
-    defaultRect.x += transform.position.x * Screen.width;// + gui.pixelInset.x; // -  Screen.width * 0.5;
+    defaultRect.x += transform.position.x * Screen.width; // + gui.pixelInset.x; // -  Screen.width * 0.5;
     defaultRect.y += transform.position.y * Screen.height;// - Screen.height * 0.5;
     
     transform.position.x = 0.0;
@@ -100,7 +100,7 @@ function ResetJoystick()
 	fingerDownPos = Vector2.zero;
 	
 	if ( touchPad )
-		gui.color.a = 0.7;	
+		gui.color.a = 0.025;	
 }
 
 function IsFingerDown() : boolean
@@ -158,7 +158,7 @@ function Update()
 				
 				if ( touchPad )
 				{
-					gui.color.a = 0.7;
+					gui.color.a = 0.15;
 					
 					lastFingerId = touch.fingerId;
 					fingerDownPos = touch.position;
@@ -201,8 +201,14 @@ function Update()
 				else
 				{					
 					// Change the location of the joystick graphic to match where the touch is
-					gui.pixelInset.x =  Mathf.Clamp( guiTouchPos.x, guiBoundary.min.x, guiBoundary.max.x );
-					gui.pixelInset.y =  Mathf.Clamp( guiTouchPos.y, guiBoundary.min.y, guiBoundary.max.y );		
+//					if ( gameObject.name == "MoveJoystick") {
+						gui.pixelInset.x =  Mathf.Clamp( guiTouchPos.x, guiBoundary.min.x, guiBoundary.max.x );
+						gui.pixelInset.y =  defaultRect.y; // Mathf.Clamp( guiTouchPos.y, guiBoundary.min.y, guiBoundary.max.y );		
+//					}
+					if ( gameObject.name == "JumpJoystick") {
+						gui.pixelInset.x =  defaultRect.x;
+						gui.pixelInset.y =  defaultRect.y;
+					}
 				}
 				
 				if ( touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled )

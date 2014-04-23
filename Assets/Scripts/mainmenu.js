@@ -6,7 +6,7 @@
 
 function OnMouseDown(){
 	if(gameObject.name == "Newgame_Texture" || gameObject.name == "Newgame_Txt") {
-		Application.LoadLevel("lvl1");
+		Application.LoadLevel("lvl4_new");
 	}	
 	if(gameObject.name == "Levelselect_Texture" || gameObject.name == "Levelselect_Txt") {
 		Application.LoadLevel("lvlselect");

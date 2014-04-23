@@ -46,35 +46,49 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\00_level4_scratch\Scripts\CameraSmoothFollower.js" />
+     <Compile Include="Assets\00_level4_scratch\Scripts\ChangeNumber.js" />
+     <Compile Include="Assets\00_level4_scratch\Scripts\PlayerControl.js" />
+     <Compile Include="Assets\00_level4_scratch\Scripts\PlayerProperties.js" />
+     <Compile Include="Assets\00_level4_scratch\Scripts\WaterGauge.js" />
      <Compile Include="Assets\AnimScript.js" />
      <Compile Include="Assets\GravityScript.js" />
      <Compile Include="Assets\Scripts\AttributeScript.js" />
      <Compile Include="Assets\Scripts\BioHarnessController.js" />
      <Compile Include="Assets\Scripts\FoodGenerator.js" />
      <Compile Include="Assets\Scripts\Score.js" />
-     <Compile Include="Assets\Scripts\SidescrollControl.js" />
+     <Compile Include="Assets\Scripts\SidescrollControl2.js" />
      <Compile Include="Assets\Scripts\deathofplayerscript.js" />
      <Compile Include="Assets\Scripts\fallingBlock.js" />
      <Compile Include="Assets\Scripts\gameoverscript.js" />
-     <Compile Include="Assets\Scripts\lv4_scripts\PlayerControl.js" />
      <Compile Include="Assets\Scripts\lvlselect.js" />
      <Compile Include="Assets\Scripts\mainmenu.js" />
      <Compile Include="Assets\Scripts\settings.js" />
      <Compile Include="Assets\Scripts\waterBlock.js" />
      <Compile Include="Assets\Scripts\watergaugescript.js" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\CameraRelativeControl.js" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\FirstPersonControl.js" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\FollowTransform.js" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\Joystick.js" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\ObliqueNear.js" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\PlayerRelativeControl.js" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\RollABall.js" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\RotationConstraint.js" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\SidescrollControl.js" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\SmoothFollow2D.js" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\ZoomCamera.js" />
+     <Compile Include="Assets\Standard Assets (Mobile)\Scripts\tapcontrol.js" />
      <Compile Include="Assets\buttonRender.js" />
      <Compile Include="Assets\generateOptions.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\CameraRelativeControl.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\FirstPersonControl.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\FollowTransform.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\Joystick.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\ObliqueNear.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\PlayerRelativeControl.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\RollABall.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\RotationConstraint.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\SmoothFollow2D.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\ZoomCamera.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\tapcontrol.js" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Detail.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Reflective.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Particles Additive Culled.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Vertex Colored.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Only.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -49,7 +49,7 @@ function Update () {
 		anim.SetFloat("speed", Mathf.Abs(1.0));
 	}
 	
-	anim.SetBool("jump", gameObject.Find("Player").GetComponent(SidescrollControl).jump);
+//	anim.SetBool("jump", gameObject.Find("Player").GetComponent(SidescrollControl).jump);
 }
 
 function Flip() {
