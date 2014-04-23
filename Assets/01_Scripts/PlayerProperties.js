@@ -33,25 +33,29 @@ function Update () {
 	// From respirationRate from BioHarness
 	var respirationRate : float;
 	
-	if(bioControl.IsConnected())
-	 	respirationRate = float.Parse(bioControl.GetRespirationRate());
- 	else
-	 	respirationRate = 16.5;
-	
-	// Hud updates
-	var waterGauge = GameObject.Find("WaterLevel").GetComponent( WaterGauge );	
-	waterGauge.Resize (water, MAX_WATER);
-	
+	// Hud bioharness updates
 	var hudNum1 = GameObject.Find("HudNum1").GetComponent( ChangeNumber );
 	var hudNum2 = GameObject.Find("HudNum2").GetComponent( ChangeNumber );
 	var hudNum3 = GameObject.Find("HudNum3").GetComponent( ChangeNumber );
 	
-	var tenth = Mathf.RoundToInt(respirationRate) / 10;
-	var one = Mathf.RoundToInt(respirationRate - tenth * 10);
-	var ffloat = Mathf.RoundToInt((respirationRate - tenth*10 - one) * 10);
-	hudNum1.ChangeNumber( tenth );
-	hudNum2.ChangeNumber( one );
-	hudNum3.ChangeNumber( ffloat );
+	if(bioControl.IsConnected()) {
+	 	respirationRate = float.Parse(bioControl.GetRespirationRate());
+		var tenth = Mathf.RoundToInt(respirationRate) / 10;
+		var one = Mathf.RoundToInt(respirationRate - tenth * 10);
+		var ffloat = Mathf.RoundToInt((respirationRate - tenth*10 - one) * 10);
+		hudNum1.ChangeNumber( tenth );
+		hudNum2.ChangeNumber( one );
+		hudNum3.ChangeNumber( ffloat );
+ 	} else {
+ 		// 10: hud_x sprite
+ 		hudNum1.ChangeNumber( 10 );
+		hudNum2.ChangeNumber( 10 );
+		hudNum3.ChangeNumber( 10 );
+ 	}
+	 
+	// Hud water updates
+	var waterGauge = GameObject.Find("WaterLevel").GetComponent( WaterGauge );	
+	waterGauge.Resize (water, MAX_WATER);
 	
 	// Water is decreased every 1 sec
 	if ( endTime - Time.time < 0) {
