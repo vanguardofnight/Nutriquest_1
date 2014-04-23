@@ -22,10 +22,13 @@ function Start () {
 function switchOnGravity(delay : int){
 	var tdelay : float = 4 / delay;
 		Debug.Log("entered function" + tdelay);
-	//yield WaitForSeconds(5.0);
-	//gameObject.rigidbody.useGravity = true;
-	gameObject.rigidbody.constraints = RigidbodyConstraints.None;
+	yield WaitForSeconds(tdelay);
+	gameObject.rigidbody.useGravity = true;
+	gameObject.rigidbody.constraints &= ~RigidbodyConstraints.FreezePositionY; 
+	yield WaitForSeconds(3);
+	Destroy(gameObject);
 }
+
 function Update () {
 	
 }

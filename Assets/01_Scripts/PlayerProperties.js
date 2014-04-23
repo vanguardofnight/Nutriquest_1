@@ -42,8 +42,7 @@ function Update () {
 	 	respirationRate = float.Parse(bioControl.GetRespirationRate());
 		var tenth = Mathf.RoundToInt(respirationRate) / 10;
 		var one = Mathf.RoundToInt(respirationRate - tenth * 10);
-		var ffloat = Mathf.RoundToInt( (respirationRate * 10) % 10);
-		Debug.Log('check point: ' + respirationRate + ', ' + ffloat);
+		var ffloat = Mathf.RoundToInt((respirationRate - tenth*10 - one) * 10)/10;
 		hudNum1.ChangeNumber( tenth );
 		hudNum2.ChangeNumber( one );
 		hudNum3.ChangeNumber( ffloat );
@@ -74,12 +73,14 @@ function OnTriggerEnter( other : Collider ) {
 	if(other.tag == "Lava"){
 		Application.LoadLevel("gameover");
 		}
+
+		if(other.tag == "FallBlock"){
+		var fallscript : fallingBlock = other.gameObject.GetComponent(fallingBlock);
+		fallscript.switchOnGravity(weight);
+	}
 	
 	if(other.tag == "Water") {
-		water += 1;
-		if(water > MAX_WATER) {
-			water = MAX_WATER;
-		}
+		water =  MAX_WATER;
 		Destroy(other.gameObject);
 	}
 	
