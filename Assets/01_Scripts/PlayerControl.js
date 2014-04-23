@@ -18,9 +18,23 @@ private var anim : Animator;
 var moveJoystick : Joystick;
 var jumpJoystick : Joystick;
 
+// BioHarness
+private var bioHarness : GameObject;
+private var bioControl : BioHarnessController;
+
+// Variables for hindering user control (Only with the bioHarness)
+private var spike : Vector3;
+private var spikeTimer : float;
+
 function Start() {
+	// BioHanress Setup
+	bioHarness = GameObject.Find( "BioHarness" );
+	bioControl = bioHarness.GetComponent( BioHarnessController );
+	
 	controller = GetComponent(CharacterController);
 	anim = GetComponent(Animator);
+	
+	spikeTimer = Time.time;
 }
 
 function PlaySound ( soundName, soundDelay : float )
@@ -35,6 +49,29 @@ function PlaySound ( soundName, soundDelay : float )
 }
 
 function Update() {	
+
+	if(bioControl.IsConnected()) {
+		// Every five second there are chance to generate a random movement spike
+		var rRate = float.Parse(bioControl.GetRespirationRate());
+		if (spikeTimer + 5.0 > Time.time) {
+			spikeTimer = Time.time;
+			if(Random.Range(0, 2) == 0) {
+				if ( Mathf.Abs(rRate - 6) < 2 )
+					spike = Vector3 (Random.Range(-1, 1), 0, 0);
+				else if ( Mathf.Abs(rRate - 6) < 3 )
+					spike = Vector3 (Random.Range(-5, 5), 0, 0);
+				else if ( Mathf.Abs(rRate - 6) < 4 )
+					spike = Vector3 (Random.Range(-13, 13), 0, 0);
+				else if ( Mathf.Abs(rRate - 6) < 5 )
+					spike = Vector3 (Random.Range(-17, 17), 0, 0);
+				else
+					spike = Vector3 (Random.Range(-21, 21), 0, 0);
+				controller.Move( spike * Time.deltaTime );
+				// Debug.Log(spike);
+			}
+		}
+	}
+	
 	// Movement in on the ground
 	if ( controller.isGrounded ) {	
 		// Physics

@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/01_Scripts/PlayerControl.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/01_Scripts/PlayerProperties.js">
     <Files>
-      <File FileName="Assets/01_Scripts/PlayerProperties.js" Line="104" Column="5" />
-      <File FileName="Assets/01_Scripts/BioHarnessController.js" Line="26" Column="20" />
-      <File FileName="Assets/01_Scripts/PlayerControl.js" Line="65" Column="3" />
+      <File FileName="Assets/01_Scripts/PlayerProperties.js" Line="41" Column="24" />
+      <File FileName="Assets/01_Scripts/PlayerControl.js" Line="61" Column="8" />
+      <File FileName="Assets/01_Scripts/Settings.js" Line="7" Column="45" />
+      <File FileName="Assets/01_Scripts/FoodGeratorV2.js" Line="76" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

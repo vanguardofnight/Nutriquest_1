@@ -22,7 +22,7 @@ var connected : boolean;
 private var timer : float;
 
 function Start(){
-	bhEnabled = true;
+	bhEnabled = false;
 	if (bhEnabled) {
 		var jc : AndroidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
 		// What's differnent from C#: add '.' between GetStatic and <>.
