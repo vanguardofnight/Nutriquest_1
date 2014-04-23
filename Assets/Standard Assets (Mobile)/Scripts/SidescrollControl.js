@@ -14,53 +14,26 @@
 var moveTouchPad : Joystick;
 var jumpTouchPad : Joystick;
 
-var forwardSpeed : float = 8;
-var backwardSpeed : float = 8;
-var jumpSpeed : float = 19;
-var inAirMultiplier : float = 0.75;					// Limiter for ground speed while jumping
-var protoSpeedMod : float = 1;							// Value for quickly modifying speed
-
-public var jump = false;
-public var jumpPowerup = false;
-public var speedPowerup = false;
-public var breakPowerup = false;
+var forwardSpeed : float = 4;
+var backwardSpeed : float = 4;
+var jumpSpeed : float = 16;
+var inAirMultiplier : float = 0.25;					// Limiter for ground speed while jumping
 
 private var thisTransform : Transform;
 private var character : CharacterController;
-private var sound : AudioSource;
 private var velocity : Vector3;						// Used for continuing momentum while in air
 private var canJump = true;
-private var internalSpeedMod : float = 1;
 
 function Start()
 {
 	// Cache component lookup at startup instead of doing this every frame		
 	thisTransform = GetComponent( Transform );
-	character = GetComponent( CharacterController );
-	sound = GetComponent( AudioSource);	
+	character = GetComponent( CharacterController );	
 
 	// Move the character to the correct start position in the level, if one exists
 	var spawn = GameObject.Find( "PlayerSpawn" );
 	if ( spawn )
 		thisTransform.position = spawn.transform.position;
-}
-
-function OnTriggerEnter(other : Collider)
-{
-	if(other.tag == "JumpPower")
-	{
-		jumpPowerup = true;
-		Destroy(other.gameObject);
-	}
-	if(other.tag == "SpeedPower")
-	{
-		//speedPowerup = true;
-		forwardSpeed = 16;
-		backwardSpeed = 16;
-		Destroy(other.gameObject);
-	}
-	
-	
 }
 
 function OnEndGame()
@@ -76,32 +49,23 @@ function OnEndGame()
 function Update()
 {
 	var movement = Vector3.zero;
-	var speedMod = protoSpeedMod*internalSpeedMod;
 
 	// Apply movement from move joystick
-	/*
 	if ( moveTouchPad.position.x > 0 )
 		movement = Vector3.right * forwardSpeed * moveTouchPad.position.x;
 	else
 		movement = Vector3.right * backwardSpeed * moveTouchPad.position.x;
-	*/
-	// Movement on PC
-	if (Input.GetKey(KeyCode.D))
-		movement = Vector3.right * forwardSpeed * 1;
-	else if (Input.GetKey(KeyCode.A))
-		movement = Vector3.right * backwardSpeed * -1;
-
 	
 	// Check for jump
 	if ( character.isGrounded )
 	{		
-		jump = false;
+		var jump = false;
 		var touchPad = jumpTouchPad;
 			
 		if ( !touchPad.IsFingerDown() )
 			canJump = true;
 		
-	 	if ( canJump && touchPad.IsFingerDown() || Input.GetKey(KeyCode.Space) )
+	 	if ( canJump && touchPad.IsFingerDown() )
 	 	{
 			jump = true;
 			canJump = false;
@@ -109,18 +73,15 @@ function Update()
 		
 		if ( jump )
 		{
-			sound.Play();
 			// Apply the current movement to launch velocity		
-			//velocity = character.velocity;
-			velocity.y = jumpSpeed;		
-			if ( jumpPowerup)
-				velocity.y = jumpSpeed + 5;
+			velocity = character.velocity;
+			velocity.y = jumpSpeed;	
 		}
 	}
 	else
 	{			
 		// Apply gravity to our velocity to diminish it over time
-		velocity.y += Physics.gravity.y * 1.5 * Time.deltaTime;
+		velocity.y += Physics.gravity.y * Time.deltaTime;
 				
 		// Adjust additional movement while in-air
 		movement.x *= inAirMultiplier;
@@ -132,7 +93,7 @@ function Update()
 	movement *= Time.deltaTime;
 	
 	// Actually move the character	
-	character.Move( movement*speedMod );
+	character.Move( movement );
 	
 	if ( character.isGrounded )
 		// Remove any persistent velocity after landing	
