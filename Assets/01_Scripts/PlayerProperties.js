@@ -3,6 +3,7 @@ private static var MAX_WATER: int = 15;
 
 var strength 		: int = 1;
 var weight 			: int = 1;
+var gameover		: boolean = false;
 
 var water 			: int = MAX_WATER;
 var fruit			: int = 0;
@@ -67,11 +68,20 @@ function Update () {
 	}
 }
 
+function OnGUI(){
+    	//Application.LoadLevel(Application.loadedLevel);
+    	if(gameover){
+		if(GUI.Button(Rect(0,0,500,500), "GAME OVER")){
+			Application.LoadLevel(Application.loadedLevel);
+			}
+		}
+}
 function OnTriggerEnter( other : Collider ) {
 	var pc = GetComponent( PlayerControl );
 	
 	if(other.tag == "Lava"){
-		Application.LoadLevel(Application.loadedLevel);
+		  	gameover = true;
+			Destroy(gameObject.GetComponent(SpriteRenderer)); 
 		}
 
 		if(other.tag == "FallBlock"){
@@ -113,3 +123,4 @@ function OnTriggerEnter( other : Collider ) {
 		Destroy(other.gameObject);
 	}
 }
+
