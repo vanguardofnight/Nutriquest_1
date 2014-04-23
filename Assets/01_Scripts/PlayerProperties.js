@@ -71,7 +71,7 @@ function OnTriggerEnter( other : Collider ) {
 	var pc = GetComponent( PlayerControl );
 	
 	if(other.tag == "Lava"){
-		Application.LoadLevel("gameover");
+		Application.LoadLevel(Application.loadedLevel);
 		}
 
 		if(other.tag == "FallBlock"){
