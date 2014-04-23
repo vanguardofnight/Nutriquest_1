@@ -1,10 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/standard assets (mobile)/Scripts/Joystick.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SidescrollControl2.js">
     <Files>
-      <File FileName="Assets/Scripts/lvlselect.js" Line="10" Column="70" />
-      <File FileName="Assets/Scripts/BioHarnessController.js" Line="43" Column="12" />
-      <File FileName="Assets/standard assets (mobile)/Scripts/Joystick.js" Line="18" Column="1" />
+      <File FileName="Assets/01_Scripts/FoodGeratorV2.js" Line="19" Column="1" />
+      <File FileName="Assets/01_Scripts/fallingBlock.js" Line="1" Column="1" />
+      <File FileName="Assets/01_Scripts/FoodGenerator.js" Line="58" Column="8" />
+      <File FileName="Assets/01_Scripts/gameoverscript.js" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SidescrollControl2.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

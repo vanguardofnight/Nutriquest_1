@@ -46,37 +46,22 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AnimScript.js" />
-     <Compile Include="Assets\GravityScript.js" />
-     <Compile Include="Assets\Scripts\AttributeScript.js" />
-     <Compile Include="Assets\Scripts\BioHarnessController.js" />
-     <Compile Include="Assets\Scripts\FoodGenerator.js" />
-     <Compile Include="Assets\Scripts\Lv4Attribute.js" />
-     <Compile Include="Assets\Scripts\Lv4Score.js" />
-     <Compile Include="Assets\Scripts\PlayerControl.js" />
-     <Compile Include="Assets\Scripts\Score.js" />
-     <Compile Include="Assets\Scripts\SidescrollControl.js" />
-     <Compile Include="Assets\Scripts\deathofplayerscript.js" />
-     <Compile Include="Assets\Scripts\fallingBlock.js" />
-     <Compile Include="Assets\Scripts\gameoverscript.js" />
-     <Compile Include="Assets\Scripts\lvlselect.js" />
-     <Compile Include="Assets\Scripts\mainmenu.js" />
-     <Compile Include="Assets\Scripts\settings.js" />
-     <Compile Include="Assets\Scripts\waterBlock.js" />
-     <Compile Include="Assets\Scripts\watergaugescript.js" />
-     <Compile Include="Assets\buttonRender.js" />
-     <Compile Include="Assets\generateOptions.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\CameraRelativeControl.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\FirstPersonControl.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\FollowTransform.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\Joystick.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\ObliqueNear.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\PlayerRelativeControl.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\RollABall.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\RotationConstraint.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\SmoothFollow2D.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\ZoomCamera.js" />
-     <Compile Include="Assets\standard assets (mobile)\Scripts\tapcontrol.js" />
+     <Compile Include="Assets\01_Scripts\BioHarnessController.js" />
+     <Compile Include="Assets\01_Scripts\CameraSmoothFollower.js" />
+     <Compile Include="Assets\01_Scripts\ChangeNumber.js" />
+     <Compile Include="Assets\01_Scripts\FoodGenerator.js" />
+     <Compile Include="Assets\01_Scripts\FoodGeratorV2.js" />
+     <Compile Include="Assets\01_Scripts\LvlSelect.js" />
+     <Compile Include="Assets\01_Scripts\MainMenu.js" />
+     <Compile Include="Assets\01_Scripts\PlayerControl.js" />
+     <Compile Include="Assets\01_Scripts\PlayerProperties.js" />
+     <Compile Include="Assets\01_Scripts\Settings.js" />
+     <Compile Include="Assets\01_Scripts\WaterGauge.js" />
+     <Compile Include="Assets\01_Scripts\deathofplayerscript.js" />
+     <Compile Include="Assets\01_Scripts\fallingBlock.js" />
+     <Compile Include="Assets\01_Scripts\gameoverscript.js" />
+     <Compile Include="Assets\01_Scripts\waterBlock.js" />
+     <Compile Include="Assets\Scripts\SidescrollControl2.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
