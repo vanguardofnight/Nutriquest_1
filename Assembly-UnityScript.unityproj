@@ -51,12 +51,12 @@
      <Compile Include="Assets\Scripts\AttributeScript.js" />
      <Compile Include="Assets\Scripts\BioHarnessController.js" />
      <Compile Include="Assets\Scripts\FoodGenerator.js" />
-     <Compile Include="Assets\Scripts\PlayerControl.js" />
      <Compile Include="Assets\Scripts\Score.js" />
      <Compile Include="Assets\Scripts\SidescrollControl.js" />
      <Compile Include="Assets\Scripts\deathofplayerscript.js" />
      <Compile Include="Assets\Scripts\fallingBlock.js" />
      <Compile Include="Assets\Scripts\gameoverscript.js" />
+     <Compile Include="Assets\Scripts\lv4_scripts\PlayerControl.js" />
      <Compile Include="Assets\Scripts\lvlselect.js" />
      <Compile Include="Assets\Scripts\mainmenu.js" />
      <Compile Include="Assets\Scripts\settings.js" />

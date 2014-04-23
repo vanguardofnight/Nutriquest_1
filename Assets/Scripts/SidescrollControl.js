@@ -79,11 +79,12 @@ function Update()
 	var speedMod = protoSpeedMod*internalSpeedMod;
 
 	// Apply movement from move joystick
+	/*
 	if ( moveTouchPad.position.x > 0 )
 		movement = Vector3.right * forwardSpeed * moveTouchPad.position.x;
 	else
 		movement = Vector3.right * backwardSpeed * moveTouchPad.position.x;
-	
+	*/
 	// Movement on PC
 	if (Input.GetKey(KeyCode.D))
 		movement = Vector3.right * forwardSpeed * 1;
