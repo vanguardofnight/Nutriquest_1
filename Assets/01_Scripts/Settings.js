@@ -4,10 +4,8 @@ var control : BioHarnessController;
 function Start() 
 {
 	Screen.autorotateToLandscapeRight = true;
-	/* Uncomment this before extracting Unity Android Project 
 	bioHarness = GameObject.Find("BioHarness");
 	control = bioHarness.GetComponent(typeof(BioHarnessController));
-	*/
 }
 
 function OnMouseDown(){

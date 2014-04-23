@@ -20,12 +20,12 @@ var connected : boolean = false;
 private var timer : float;
 
 function Start(){
-	/* Uncomment this before extracting Unity Android Project 
-	var jc : AndroidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+//	/* Uncomment this before extracting Unity Android Project 
+//	var jc : AndroidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
 	
 	// What's differnent from C#: add '.' between GetStatic and <>.
-	curActivity = jc.GetStatic.<AndroidJavaObject>("currentActivity");		
-	*/
+//	curActivity = jc.GetStatic.<AndroidJavaObject>("currentActivity");		
+//	*/
 	timer = Time.time;
 	strLog = "Initialized";
 }

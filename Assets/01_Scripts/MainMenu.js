@@ -1,6 +1,5 @@
 ﻿function Start() 
 {
-//	Screen.autorotateToLandscapeRight = true;
  	Screen.orientation = ScreenOrientation.LandscapeLeft;
 }
 
