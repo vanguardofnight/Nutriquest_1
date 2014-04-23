@@ -28,9 +28,11 @@ public var breakPowerup = false;
 private var thisTransform : Transform;
 private var character : CharacterController;
 private var sound : AudioSource;
+var flavor : FlavorScript;
 private var velocity : Vector3;						// Used for continuing momentum while in air
 private var canJump = true;
 private var internalSpeedMod : float = 1;
+
 
 function Start()
 {
@@ -38,6 +40,8 @@ function Start()
 	thisTransform = GetComponent( Transform );
 	character = GetComponent( CharacterController );
 	sound = GetComponent( AudioSource);	
+	var po : GameObject = GameObject.Find("AlienMan");
+	flavor = po.GetComponent(FlavorScript);
 
 	// Move the character to the correct start position in the level, if one exists
 	var spawn = GameObject.Find( "PlayerSpawn" );
@@ -50,6 +54,8 @@ function OnTriggerEnter(other : Collider)
 	if(other.tag == "JumpPower")
 	{
 		jumpPowerup = true;
+		flavor.Eat();
+		flavor.ColorTransitionGood();
 		Destroy(other.gameObject);
 	}
 	if(other.tag == "SpeedPower")
@@ -57,6 +63,8 @@ function OnTriggerEnter(other : Collider)
 		//speedPowerup = true;
 		forwardSpeed = 16;
 		backwardSpeed = 16;
+		flavor.Eat();
+		flavor.ColorTransitionGood();
 		Destroy(other.gameObject);
 	}
 	
