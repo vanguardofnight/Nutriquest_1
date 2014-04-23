@@ -70,6 +70,10 @@ function Update () {
 function OnTriggerEnter( other : Collider ) {
 	var pc = GetComponent( PlayerControl );
 	
+	if(other.tag == "Lava"){
+		Application.LoadLevel("gameover");
+		}
+	
 	if(other.tag == "Water") {
 		water += 1;
 		if(water > MAX_WATER) {
