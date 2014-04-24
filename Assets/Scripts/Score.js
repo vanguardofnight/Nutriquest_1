@@ -4,6 +4,7 @@ var MaxPoints : int;
 var ScoreTextPosition : Rect = Rect(0, 0, 256, 128);
 var style : GUIStyle;
 var flavor : FlavorScript;
+var particle : GameObject;
 
 function Start()
 {
@@ -14,6 +15,13 @@ function Start()
  
 function OnTriggerEnter(other : Collider)
 {
+	if (other.tag != "Water")
+	{	
+		var cloneParticle : GameObject;
+		cloneParticle = Instantiate(particle, transform.position, transform.rotation);
+		cloneParticle.particleSystem.Emit(3);
+		Destroy(cloneParticle,3);
+	}
 	if(other.tag == "Point")
 	{
 		PlayerScore += 1;
