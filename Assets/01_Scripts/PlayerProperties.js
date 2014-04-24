@@ -17,7 +17,8 @@ var protein			: int = 0;
 var junkfood		: int = 0;
 var dairy			: int = 0;
 
-var flavor : FlavorScript;
+private var flavor : FlavorScript;
+//var audio : AudioClip;
 var particle : GameObject;
 var score 			: int = 0;
 
@@ -166,6 +167,7 @@ function OnTriggerEnter( other : Collider ) {
 		junkfood += 1;
 		flavor.Eat();
 		flavor.ColorTransitionBad();
+		//audio.Play();
 		Destroy(other.gameObject);
 	}
 	
