@@ -4,6 +4,7 @@ private static var MAX_WATER: int = 15;
 var strength 		: int = 1;
 var weight 			: int = 1;
 var gameover		: boolean = false;
+var levelComplete	: boolean = false;
 
 var water 			: int = MAX_WATER;
 var fruit			: int = 0;
@@ -71,10 +72,33 @@ function Update () {
 function OnGUI(){
     	//Application.LoadLevel(Application.loadedLevel);
     	if(gameover){
-		if(GUI.Button(Rect(0,0,500,500), "GAME OVER")){
+		if(GUI.Button(Rect(0,0,1920,1200), "GAME OVER")){
 			Application.LoadLevel(Application.loadedLevel);
 			}
+			
 		}
+		
+		if(levelComplete){
+			if(GUI.Button(Rect(0,0,1920,1200), "LEVEL COMPLETE!")){
+				var curLevel  = Application.loadedLevelName;
+				switch (curLevel) {
+					case "lvl1":
+						Application.LoadLevel("lvl2");
+						break;
+					case "lvl2":
+						Application.LoadLevel("lvl3");
+						break;
+					case "lvl3":
+						Application.LoadLevel("lvl4");
+						break;
+					case "lvl4":
+						Application.LoadLevel("intro");
+						break;
+					default:
+						Application.LoadLevel("intro"); 
+					}
+				}
+			}
 }
 function OnTriggerEnter( other : Collider ) {
 	var pc = GetComponent( PlayerControl );
@@ -83,8 +107,12 @@ function OnTriggerEnter( other : Collider ) {
 		  	gameover = true;
 			Destroy(gameObject.GetComponent(SpriteRenderer)); 
 		}
-
-		if(other.tag == "FallBlock"){
+	if(other.tag == "Finish"){
+			levelComplete = true;
+	}
+		
+		
+	if(other.tag == "FallBlock"){
 		var fallscript : fallingBlock = other.gameObject.GetComponent(fallingBlock);
 		fallscript.switchOnGravity(weight);
 	}
