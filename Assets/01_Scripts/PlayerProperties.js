@@ -19,6 +19,7 @@ var dairy			: int = 0;
 
 var flavor : FlavorScript;
 var particle : GameObject;
+var score 			: int = 0;
 
 // Timer (one second)
 private var endTime : float;
@@ -77,6 +78,30 @@ function Update () {
 		//Application.LoadLevel("gameover");
 		gameover = true;
 	}
+	
+	// HUD elements relating to weight, strength (dairy), and score
+	var weightNum = GameObject.Find("WeightNum").GetComponent( ChangeNumber );
+	var strengthNum = GameObject.Find("StrengthNum").GetComponent( ChangeNumber );
+	var pointNum1 = GameObject.Find("PointNum1").GetComponent( ChangeNumber );
+	var pointNum2 = GameObject.Find("PointNum2").GetComponent( ChangeNumber );
+	var pointNum3 = GameObject.Find("PointNum3").GetComponent( ChangeNumber );
+	
+	score = (6*grain + 8*dairy + 4*protein - 2*junkfood);
+	
+	if(bioControl.IsConnected()) {
+	 	var avgBreathing = bioControl.GetAvg();
+	 	score = score * (avgBreathing/6);
+	}
+	
+	var score_hund = Mathf.RoundToInt(score)/100;
+	var score_tenth = Mathf.RoundToInt(score - score_hund*100) / 10;
+	var score_one = Mathf.RoundToInt(score - score_hund*100 - score_tenth*10);
+	
+	weightNum.ChangeNumber( weight );
+	strengthNum.ChangeNumber( strength );
+	pointNum1.ChangeNumber( score_hund );
+	pointNum2.ChangeNumber( score_tenth );
+	pointNum3.ChangeNumber( score_one );
 }
 
 function OnGUI(){
