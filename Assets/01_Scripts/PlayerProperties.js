@@ -201,7 +201,7 @@ function OnTriggerEnter( other : Collider ) {
 	}
 	
 	if(other.tag == "BreakBlock"){
-		if(strength >= 5){
+		if(strength >= 3){
 			Destroy(other.gameObject);
 		}
 	}
