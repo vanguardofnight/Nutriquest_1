@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\01_Scripts\AnimScript.js" />
      <Compile Include="Assets\01_Scripts\BioHarnessController.js" />
      <Compile Include="Assets\01_Scripts\CameraSmoothFollower.js" />
      <Compile Include="Assets\01_Scripts\ChangeNumber.js" />

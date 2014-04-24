@@ -1,5 +1,5 @@
 ﻿// Physic variables
-private var controller : CharacterController;
+var controller : CharacterController;
 var speed 			: float = 8.0;
 var jumpSpeed 		: float = 15.0;
 var gravity 		: float = 20.0;
@@ -12,7 +12,7 @@ private var soundRate		: float = 0.0;
 private var soundDelay		: float = 0.0;
 
 // Visual effect variables
-private var anim : Animator;
+var anim : Animator;
 
 // Joystick
 var moveJoystick : Joystick;
@@ -49,7 +49,6 @@ function PlaySound ( soundName, soundDelay : float )
 }
 
 function Update() {	
-
 	if(bioControl.IsConnected()) {
 		// Every five second there are chance to generate a random movement spike
 		var rRate = float.Parse(bioControl.GetRespirationRate());

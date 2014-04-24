@@ -206,7 +206,7 @@ function OnTriggerEnter( other : Collider ) {
 		}
 	}
 			
-	if( other.tag == "Protein" || other.tag == "Fruit" || other.tag == "Grain" || other.tag == "Dairy" || other.tag == "JunkFood")
+	if( other.tag == "Protein" || other.tag == "Fruit" || other.tag == "Grain" || other.tag == "Dairy" || other.tag == "JunkFood" || other.tag == "BreakBlock")
 	{
 		var cloneParticle : GameObject;
 		cloneParticle = Instantiate(particle, transform.position, transform.rotation);

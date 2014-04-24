@@ -1,6 +1,6 @@
 ﻿var durationMultiplier 	: float = 1;
-var maxTimer 			: int = 20;
-var minTimer			: int = 10;
+var maxTimer 			: int;
+var minTimer			: int;
 
 // XY Coordinates for sections
 // x: minX, y: maxX, z: minY, w: maxY
@@ -25,7 +25,7 @@ var avgRate				: float = 1;
 private var bioHarness : GameObject;
 private var bioControl : BioHarnessController;
 
-function Start () {	
+function Start () {		
 	// BioHanress Setup
 	bioHarness = GameObject.Find( "BioHarness" );
 	bioControl = bioHarness.GetComponent( BioHarnessController );
@@ -36,6 +36,9 @@ function Start () {
 	arr_objects = new GameObject[size];
 	
 	// Assign initial timer
+	minTimer = 10;
+	maxTimer = 20;
+	
 	for(var i = 0; i < size; i++){
 		// Minimum 5 seconds to MAX
 		arr_maxTimers[i] = Random.Range(minTimer, maxTimer);
@@ -63,15 +66,15 @@ function Start () {
 function CountDown (){
 	for(var i=0; i< size; i++) {
 		if(arr_timers[i] == arr_maxTimers[i]){
-			// 33% Chances for respawn a water object
-			if(Random.Range(0,2) == 0) {
+			// 20% Chances for respawn a water object
+			if(Random.Range(0,4) == 0) {
 				arr_objects[i] = Instantiate(Resources.Load(arr_prefabs[10]), RandVec3(i), Quaternion.identity);
 			} else {		
 				arr_objects[i] = Instantiate(Resources.Load(arr_prefabs[Random.Range(0,9)]), RandVec3(i), Quaternion.identity);
 			}
 			arr_timers[i]--;
-		} else if(arr_timers[i] <= 0){
-			var localTimer : float;
+		} else if(arr_timers[i] <= 0) {
+			var localTimer : int;
 			if ( bioControl.IsConnected() ) {
 				var rRate = float.Parse(bioControl.GetRespirationRate());
 				if ( Mathf.Abs(rRate - 6) < 1 )
