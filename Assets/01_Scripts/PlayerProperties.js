@@ -18,7 +18,8 @@ var junkfood		: int = 0;
 var dairy			: int = 0;
 
 private var flavor : FlavorScript;
-//var audio : AudioClip;
+var penalty : AudioSource;
+var waterAudio : AudioSource;
 var particle : GameObject;
 var score 			: int = 0;
 
@@ -116,7 +117,7 @@ function OnGUI(){
 		}
 		
 		if(levelComplete){
-			var levelcompleteText = " CONGRATULATIONS!! ";
+			var levelcompleteText = " CONGRATULATIONS!! \nYour Score: " + score;
 			if(GUI.Button(Rect(0,0,1920,1200), GUIContent(levelcompleteText,texture, tooltip), style)){
 				var curLevel  = Application.loadedLevelName;
 				switch (curLevel) {
@@ -134,6 +135,7 @@ function OnGUI(){
 						break;
 					default:
 						Application.LoadLevel("intro"); 
+						
 					}
 				}
 			}
@@ -157,7 +159,7 @@ function OnTriggerEnter( other : Collider ) {
 	
 	if(other.tag == "Water") {
 		water =  MAX_WATER;
-		flavor.Eat();
+		waterAudio.Play();
 		flavor.ColorTransitionGood();
 		Destroy(other.gameObject);
 	}
@@ -167,7 +169,7 @@ function OnTriggerEnter( other : Collider ) {
 		junkfood += 1;
 		flavor.Eat();
 		flavor.ColorTransitionBad();
-		//audio.Play();
+		penalty.Play(30000);
 		Destroy(other.gameObject);
 	}
 	
@@ -208,7 +210,7 @@ function OnTriggerEnter( other : Collider ) {
 		}
 	}
 			
-	if( other.tag == "Protein" || other.tag == "Fruit" || other.tag == "Grain" || other.tag == "Dairy" || other.tag == "JunkFood" || other.tag == "BreakBlock")
+	if( other.tag == "Protein" || other.tag == "Fruit" || other.tag == "Grain" || other.tag == "Dairy" || other.tag == "JunkFood")
 	{
 		var cloneParticle : GameObject;
 		cloneParticle = Instantiate(particle, transform.position, transform.rotation);

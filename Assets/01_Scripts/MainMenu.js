@@ -1,9 +1,13 @@
-﻿function Start() 
+﻿var click : AudioSource;
+
+function Start() 
 {
  	Screen.orientation = ScreenOrientation.LandscapeLeft;
 }
 
 function OnMouseDown(){
+	click.Play();
+	yield WaitForSeconds(0.35);
 	if(gameObject.name == "Newgame_Texture" || gameObject.name == "Newgame_Txt") {
 		Application.LoadLevel("lvl1");
 	}	
