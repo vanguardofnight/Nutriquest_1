@@ -13,6 +13,9 @@ var protein			: int = 0;
 var junkfood		: int = 0;
 var dairy			: int = 0;
 
+var flavor : FlavorScript;
+var particle : GameObject;
+
 // Timer (one second)
 private var endTime : float;
 private var waterTimer : float = 2.0;
@@ -26,6 +29,8 @@ function Start () {
 	bioHarness = GameObject.Find( "BioHarness" );
 	bioControl = bioHarness.GetComponent( BioHarnessController );
 	bioControl.InitRecord();
+	
+	flavor = GetComponent(FlavorScript);
 	
 	// Timer for water comsumption
 	endTime = Time.time + waterTimer;
@@ -120,35 +125,47 @@ function OnTriggerEnter( other : Collider ) {
 	
 	if(other.tag == "Water") {
 		water =  MAX_WATER;
+		flavor.Eat();
+		flavor.ColorTransitionGood();
 		Destroy(other.gameObject);
 	}
 	
 	if(other.tag == "JunkFood") {
 		weight += 1;
 		junkfood += 1;
+		flavor.Eat();
+		flavor.ColorTransitionBad();
 		Destroy(other.gameObject);
 	}
 	
 	if(other.tag == "Dairy") {
 		strength += 1;
 		dairy += 1;
+		flavor.Eat();
+		flavor.ColorTransitionGood();
 		Destroy(other.gameObject);
 	}
 	
 	if( other.tag == "Fruit") {
 		fruit += 1;
+		flavor.Eat();
+		flavor.ColorTransitionGood();
 		Destroy(other.gameObject);
 	}
 	
 	if( other.tag == "Grain") {
 		pc.incSpeed();
 		grain += 1;
+		flavor.Eat();
+		flavor.ColorTransitionGood();
 		Destroy(other.gameObject);
 	}
 	
 	if( other.tag == "Protein") {
 		pc.incJumpSpeed();
 		protein += 1;
+		flavor.Eat();
+		flavor.ColorTransitionGood();
 		Destroy(other.gameObject);
 	}
 	
@@ -157,5 +174,13 @@ function OnTriggerEnter( other : Collider ) {
 			Destroy(other.gameObject);
 		}
 	}
+			
+	if( other.tag == "Protein" || other.tag == "Fruit" || other.tag == "Grain" || other.tag == "Dairy" || other.tag == "JunkFood")
+	{
+		var cloneParticle : GameObject;
+		cloneParticle = Instantiate(particle, transform.position, transform.rotation);
+		cloneParticle.particleSystem.Emit(3);
+		Destroy(cloneParticle,3);
+	}	
 }
 
