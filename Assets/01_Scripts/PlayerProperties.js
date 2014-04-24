@@ -150,5 +150,11 @@ function OnTriggerEnter( other : Collider ) {
 		protein += 1;
 		Destroy(other.gameObject);
 	}
+	
+	if(other.tag == "BreakBlock"){
+		if(strength >= 5){
+			Destroy(other.gameObject);
+		}
+	}
 }
 
