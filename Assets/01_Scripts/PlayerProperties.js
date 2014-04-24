@@ -86,7 +86,7 @@ function Update () {
 	var pointNum2 = GameObject.Find("PointNum2").GetComponent( ChangeNumber );
 	var pointNum3 = GameObject.Find("PointNum3").GetComponent( ChangeNumber );
 	
-	score = (6*grain + 8*dairy + 4*protein - 2*junkfood);
+	score = (6*grain + 8*dairy + 4*protein - 2*junkfood + 3*fruit);
 	
 	if(bioControl.IsConnected()) {
 	 	var avgBreathing = bioControl.GetAvg();
