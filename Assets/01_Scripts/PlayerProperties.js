@@ -65,7 +65,8 @@ function Update () {
 		endTime = Time.time + waterTimer;
 	}
 	if(water <= 0){
-		Application.LoadLevel("gameover");
+		//Application.LoadLevel("gameover");
+		gameover = true;
 	}
 }
 
