@@ -129,7 +129,7 @@ function Update() {
 }
 
 function incJumpSpeed () {
-	jumpSpeed += 1;
+	jumpSpeed += 4;
 }
 
 function incSpeed () {

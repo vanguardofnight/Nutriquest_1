@@ -1,6 +1,10 @@
 ﻿// This script is handling user properties & item pickup
 private static var MAX_WATER: int = 15;
 
+var texture : Texture;
+var tooltip : String;
+var style : GUIStyle;
+
 var strength 		: int = 1;
 var weight 			: int = 1;
 var gameover		: boolean = false;
@@ -77,15 +81,17 @@ function Update () {
 
 function OnGUI(){
     	//Application.LoadLevel(Application.loadedLevel);
+    	var gameoverText = "GAME OVER";
     	if(gameover){
-		if(GUI.Button(Rect(0,0,1920,1200), "GAME OVER")){
+		if(GUI.Button(Rect(0,0,1920,1200), GUIContent(gameoverText,texture, tooltip), style)){
 			Application.LoadLevel(Application.loadedLevel);
 			}
 			
 		}
 		
 		if(levelComplete){
-			if(GUI.Button(Rect(0,0,1920,1200), "LEVEL COMPLETE!")){
+			var levelcompleteText = " CONGRATULATIONS!! ";
+			if(GUI.Button(Rect(0,0,1920,1200), GUIContent(levelcompleteText,texture, tooltip), style)){
 				var curLevel  = Application.loadedLevelName;
 				switch (curLevel) {
 					case "lvl1":
