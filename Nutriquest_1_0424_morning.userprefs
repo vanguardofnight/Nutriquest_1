@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/01_Scripts/BioHarnessController.js">
+    <Files>
+      <File FileName="Assets/01_Scripts/BioHarnessController.js" Line="82" Column="2" />
+      <File FileName="Assets/01_Scripts/PlayerControl.js" Line="56" Column="24" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
