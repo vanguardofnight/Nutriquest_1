@@ -1,6 +1,0 @@
---- Instruction
-1. Open the Android Project exported from Unity
-2. Add BioHarnessBT.jar into "/libs"
-3. Add NewConnectedListener.java into "/src/com/gvr/NutriQuest"
-3. Replace AndroidManifest.xml
-4. Replace UnityPlayerNativeActivity.java
