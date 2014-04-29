@@ -10,7 +10,8 @@ public class Intro : MonoBehaviour {
 	GUIStyle titleStyle = new GUIStyle();
 	GUIStyle menuStyle = new GUIStyle();
 	Texture yellowButton;
-	
+	GUIText log;
+
 	// Use this for initialization
 	void Start () {
 		Screen.orientation = ScreenOrientation.LandscapeLeft;
@@ -46,7 +47,7 @@ public class Intro : MonoBehaviour {
 		newGame.text = "New game";
 		GUI.DrawTexture(new Rect (80.0f, 90.0f, 280.0f, 70.0f), yellowButton, ScaleMode.StretchToFill, true, 0.0f);
 		if (GUI.Button (new Rect (80.0f, 90.0f, 280.0f, 70.0f), newGame, menuStyle)) {
-			StartCoroutine(NextScene ("lvl1"));
+//			control.connect();
 		}
 
 		GUIContent levelSelect = new GUIContent ();

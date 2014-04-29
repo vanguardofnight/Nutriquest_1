@@ -52,10 +52,9 @@
      <Compile Include="Assets\01_Scripts\FlavorScript.js" />
      <Compile Include="Assets\01_Scripts\FoodGeratorV2.js" />
      <Compile Include="Assets\01_Scripts\LvlSelect.js" />
-     <Compile Include="Assets\01_Scripts\MainMenu.js" />
      <Compile Include="Assets\01_Scripts\PlayerControl.js" />
      <Compile Include="Assets\01_Scripts\PlayerProperties.js" />
-     <Compile Include="Assets\01_Scripts\Settings.js" />
+     <Compile Include="Assets\01_Scripts\Settingsmenu.js" />
      <Compile Include="Assets\01_Scripts\WaterGauge.js" />
      <Compile Include="Assets\01_Scripts\deathofplayerscript.js" />
      <Compile Include="Assets\01_Scripts\fallingBlock.js" />
