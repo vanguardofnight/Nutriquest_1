@@ -24,7 +24,6 @@ private var bioControl : BioHarnessController;
 
 // Variables for hindering user control (Only with the bioHarness)
 private var spike : Vector3;
-private var spikeTimer : float;
 
 function Start() {
 	// BioHanress Setup
@@ -33,8 +32,6 @@ function Start() {
 	
 	controller = GetComponent(CharacterController);
 	anim = GetComponent(Animator);
-	
-	spikeTimer = Time.time;
 }
 
 function PlaySound ( soundName, soundDelay : float )
@@ -49,26 +46,21 @@ function PlaySound ( soundName, soundDelay : float )
 }
 
 function Update() {	
-
 	if(bioControl.IsConnected()) {
-		// Every five second there are chance to generate a random movement spike
 		var rRate = float.Parse(bioControl.GetRespirationRate());
-		if (spikeTimer + 5.0 > Time.time) {
-			spikeTimer = Time.time;
-			if(Random.Range(0, 2) == 0) {
-				if ( Mathf.Abs(rRate - 6) < 2 )
-					spike = Vector3 (Random.Range(-1, 1), 0, 0);
-				else if ( Mathf.Abs(rRate - 6) < 3 )
-					spike = Vector3 (Random.Range(-5, 5), 0, 0);
-				else if ( Mathf.Abs(rRate - 6) < 4 )
-					spike = Vector3 (Random.Range(-13, 13), 0, 0);
-				else if ( Mathf.Abs(rRate - 6) < 5 )
-					spike = Vector3 (Random.Range(-17, 17), 0, 0);
-				else
-					spike = Vector3 (Random.Range(-21, 21), 0, 0);
-				controller.Move( spike * Time.deltaTime );
-				// Debug.Log(spike);
-			}
+		if(Random.Range(0, 2) == 0) {
+			if ( Mathf.Abs(rRate - 6) < 2 )
+				spike = Vector3 (Random.Range(-0.5, 0.5), 0, 0);
+			else if ( Mathf.Abs(rRate - 6) < 3 )
+				spike = Vector3 (Random.Range(-2.5, 2.5), 0, 0);
+			else if ( Mathf.Abs(rRate - 6) < 4 )
+				spike = Vector3 (Random.Range(-6.0, 6.0), 0, 0);
+			else if ( Mathf.Abs(rRate - 6) < 5 )
+				spike = Vector3 (Random.Range(-9.0, 9.0), 0, 0);
+			else
+				spike = Vector3 (Random.Range(-13.0, 13.0), 0, 0);
+			controller.Move( spike * Time.deltaTime );
+			// Debug.Log(spike);
 		}
 	}
 	
@@ -94,7 +86,7 @@ function Update() {
 		// Physics
 		// Stop jumping when a character hits ceiling
 		if ( Input.GetButtonUp ( "Jump" ) ) {
-			velocity.y -= jumpSpeed/4;
+			velocity.y -= jumpSpeed/4.0;
 		}
 		
 		velocity.x = Input.GetAxis( "Horizontal" ) + moveJoystick.position.x;

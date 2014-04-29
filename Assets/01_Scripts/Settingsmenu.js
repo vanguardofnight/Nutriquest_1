@@ -16,6 +16,7 @@ private var control : BioHarnessController;
 function Start () {
 	bioHarness = GameObject.Find("BioHarness");
 	control = bioHarness.GetComponent(typeof(BioHarnessController));
+	
 	titleStyle.font = Resources.Load("Fonts/kenvector_future", Font);
 	titleStyle.fontSize = 25;
 	titleStyle.normal.textColor = Color (0, 0, 0, 1.0f);
@@ -48,7 +49,7 @@ function OnGUI() {
 	if (GUI.Button ( Rect (80.0f, 115.0f, 180.0f, 55.0f), "Connect", menuStyle)) {
 		select(1);
 	}
-	GUI.Label(Rect(80, 175, 300, 120), "- System Log: ", logStyle);// + control.GetLog());
+	GUI.Label(Rect(80, 175, 300, 120), "- System Log: " + control.GetLog(), logStyle);
 	
 	GUI.DrawTexture( Rect (300.0f, 115.0f, 190.0f, 55.0f), yellowButton, ScaleMode.StretchToFill, true, 0.0f);
 	if (GUI.Button ( Rect (300.0f, 115.0f, 190.0f, 55.0f), "Disconnect", menuStyle)) {
@@ -68,13 +69,11 @@ function OnGUI() {
 function select (type : int){
 	if (type == 1) {
 		audio.PlayOneShot(clickSound);
-		yield WaitForSeconds (0.35);
 		control.connect();
 	}
 	
 	if (type == 2) {
 		audio.PlayOneShot(clickSound);
-		yield WaitForSeconds (0.35);
 		control.disconnect();
 	}
 	

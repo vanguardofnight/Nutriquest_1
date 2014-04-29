@@ -25,6 +25,7 @@ var penalty : AudioSource;
 var waterAudio : AudioSource;
 var particle : GameObject;
 var score 			: int = 0;
+var finalScore		: int = 0;
 
 // Timer for water (2 seconds)
 private var endTime : float;
@@ -69,76 +70,80 @@ function Start () {
 }
 
 function Update () {
-	if (curLevel == "lvl4") {
-		if (gameEndTimer < Time.time) {
-			levelComplete = true;
+	if( !gameover && !levelComplete) {
+		if (curLevel == "lvl4") {
+			if (gameEndTimer < Time.time) {
+				finalScore = score;
+				levelComplete = true;
+			}
+			if ( oneSecTimer < Time.time) {
+				gameTimeTxt--;
+				oneSecTimer = Time.time + 1.0;
+			}
 		}
-		if ( oneSecTimer < Time.time) {
-			gameTimeTxt--;
-			oneSecTimer = Time.time + 1.0;
+		
+		// From respirationRate from BioHarness
+		var respirationRate : float;
+		
+		// Hud bioharness updates
+		var hudNum1 = GameObject.Find("HudNum1").GetComponent( ChangeNumber );
+		var hudNum2 = GameObject.Find("HudNum2").GetComponent( ChangeNumber );
+		var hudNum3 = GameObject.Find("HudNum3").GetComponent( ChangeNumber );
+		
+		if(bioControl.IsConnected()) {
+		 	respirationRate = float.Parse(bioControl.GetRespirationRate());
+			var tenth = Mathf.RoundToInt(respirationRate) / 10;
+			var one = Mathf.RoundToInt(respirationRate - tenth * 10);
+			var ffloat = Mathf.RoundToInt((respirationRate - tenth*10 - one) * 10)/10;
+			hudNum1.ChangeNumber( tenth );
+			hudNum2.ChangeNumber( one );
+			hudNum3.ChangeNumber( ffloat );
+	 	} else {
+	 		// 10: hud_x sprite
+	 		hudNum1.ChangeNumber( 10 );
+			hudNum2.ChangeNumber( 10 );
+			hudNum3.ChangeNumber( 10 );
+	 	}
+		 
+		// Hud water updates
+		var waterGauge = GameObject.Find("WaterLevel").GetComponent( WaterGauge );	
+		waterGauge.Resize (water, MAX_WATER);
+		
+		// Water is decreased every 2 sec
+		if ( endTime - Time.time < 0) {
+			water -= 1;
+			endTime = Time.time + waterTimer;
 		}
+		if(water <= 0){
+			//Application.LoadLevel("gameover");
+			gameover = true;
+		}
+		
+		// HUD elements relating to weight, strength (dairy), and score
+		var weightNum = GameObject.Find("WeightNum").GetComponent( ChangeNumber );
+		var strengthNum = GameObject.Find("StrengthNum").GetComponent( ChangeNumber );
+		var pointNum1 = GameObject.Find("PointNum1").GetComponent( ChangeNumber );
+		var pointNum2 = GameObject.Find("PointNum2").GetComponent( ChangeNumber );
+		var pointNum3 = GameObject.Find("PointNum3").GetComponent( ChangeNumber );
+		
+		score = (6*grain + 8*dairy + 4*protein - 2*junkfood + 3*fruit);
+		if( score < 0 ) score = 0;
+		
+		if(bioControl.IsConnected()) {
+		 	var avgBreathing = bioControl.GetAvg();
+		 	score = score * (avgBreathing/6);
+		}
+		
+		var score_hund = Mathf.RoundToInt(score)/100;
+		var score_tenth = Mathf.RoundToInt(score - score_hund*100) / 10;
+		var score_one = Mathf.RoundToInt(score - score_hund*100 - score_tenth*10);
+		
+		weightNum.ChangeNumber( weight );
+		strengthNum.ChangeNumber( strength );
+		pointNum1.ChangeNumber( score_hund );
+		pointNum2.ChangeNumber( score_tenth );
+		pointNum3.ChangeNumber( score_one );
 	}
-	
-	// From respirationRate from BioHarness
-	var respirationRate : float;
-	
-	// Hud bioharness updates
-	var hudNum1 = GameObject.Find("HudNum1").GetComponent( ChangeNumber );
-	var hudNum2 = GameObject.Find("HudNum2").GetComponent( ChangeNumber );
-	var hudNum3 = GameObject.Find("HudNum3").GetComponent( ChangeNumber );
-	
-	if(bioControl.IsConnected()) {
-	 	respirationRate = float.Parse(bioControl.GetRespirationRate());
-		var tenth = Mathf.RoundToInt(respirationRate) / 10;
-		var one = Mathf.RoundToInt(respirationRate - tenth * 10);
-		var ffloat = Mathf.RoundToInt((respirationRate - tenth*10 - one) * 10)/10;
-		hudNum1.ChangeNumber( tenth );
-		hudNum2.ChangeNumber( one );
-		hudNum3.ChangeNumber( ffloat );
- 	} else {
- 		// 10: hud_x sprite
- 		hudNum1.ChangeNumber( 10 );
-		hudNum2.ChangeNumber( 10 );
-		hudNum3.ChangeNumber( 10 );
- 	}
-	 
-	// Hud water updates
-	var waterGauge = GameObject.Find("WaterLevel").GetComponent( WaterGauge );	
-	waterGauge.Resize (water, MAX_WATER);
-	
-	// Water is decreased every 2 sec
-	if ( endTime - Time.time < 0) {
-		water -= 1;
-		endTime = Time.time + waterTimer;
-	}
-	if(water <= 0){
-		//Application.LoadLevel("gameover");
-		gameover = true;
-	}
-	
-	// HUD elements relating to weight, strength (dairy), and score
-	var weightNum = GameObject.Find("WeightNum").GetComponent( ChangeNumber );
-	var strengthNum = GameObject.Find("StrengthNum").GetComponent( ChangeNumber );
-	var pointNum1 = GameObject.Find("PointNum1").GetComponent( ChangeNumber );
-	var pointNum2 = GameObject.Find("PointNum2").GetComponent( ChangeNumber );
-	var pointNum3 = GameObject.Find("PointNum3").GetComponent( ChangeNumber );
-	
-	score = (6*grain + 8*dairy + 4*protein - 2*junkfood + 3*fruit);
-	
-	if(bioControl.IsConnected()) {
-	 	var avgBreathing = bioControl.GetAvg();
-	 	score = score * (avgBreathing/6);
-	}
-	
-	var score_hund = Mathf.RoundToInt(score)/100;
-	var score_tenth = Mathf.RoundToInt(score - score_hund*100) / 10;
-	var score_one = Mathf.RoundToInt(score - score_hund*100 - score_tenth*10);
-	
-	weightNum.ChangeNumber( weight );
-	strengthNum.ChangeNumber( strength );
-	pointNum1.ChangeNumber( score_hund );
-	pointNum2.ChangeNumber( score_tenth );
-	pointNum3.ChangeNumber( score_one );
 }
 
 function OnGUI(){
@@ -164,7 +169,7 @@ function OnGUI(){
 	
 	if(levelComplete){
 		GUI.DrawTexture( Rect (0, 0, originalWidth, originalHeight), bgButton, ScaleMode.StretchToFill, true, 0.0f);
-		var levelcompleteText = " CONGRATULATIONS!! \nYour Score: " + score;
+		var levelcompleteText = " CONGRATULATIONS!! \nYour Score: " + finalScore;
 		if(GUI.Button(Rect(0, 0, originalWidth, originalHeight), levelcompleteText, titleStyle)){
 			switch (curLevel) {
 				case "lvl1":
@@ -191,81 +196,84 @@ function OnGUI(){
 
 function OnTriggerEnter( other : Collider ) {
 	var pc = GetComponent( PlayerControl );
+	if( !gameover && !levelComplete) {
 	
-	if(other.tag == "Lava"){
-	  	gameover = true;
-		// Destroy(gameObjecgamet.GetComponent(SpriteRenderer));
-	}
-	
-	if(other.tag == "Finish"){
+		if(other.tag == "Lava"){
+		  	gameover = true;
+			// Destroy(gameObjecgamet.GetComponent(SpriteRenderer));
+		}
+		
+		if(other.tag == "Finish"){
 			levelComplete = true;
-	}
+			finalScore = score;
+		}
+			
+			
+		if(other.tag == "FallBlock"){
+			var fallscript : fallingBlock = other.gameObject.GetComponent(fallingBlock);
+			fallscript.switchOnGravity(weight);
+		}
 		
-		
-	if(other.tag == "FallBlock"){
-		var fallscript : fallingBlock = other.gameObject.GetComponent(fallingBlock);
-		fallscript.switchOnGravity(weight);
-	}
-	
-	if(other.tag == "Water") {
-		water =  MAX_WATER;
-		waterAudio.Play();
-		flavor.ColorTransitionGood();
-		Destroy(other.gameObject);
-	}
-	
-	if(other.tag == "JunkFood") {
-		weight += 1;
-		junkfood += 1;
-		flavor.Eat();
-		flavor.ColorTransitionBad();
-		penalty.Play(30000);
-		Destroy(other.gameObject);
-	}
-	
-	if(other.tag == "Dairy") {
-		strength += 1;
-		dairy += 1;
-		flavor.Eat();
-		flavor.ColorTransitionGood();
-		Destroy(other.gameObject);
-	}
-	
-	if( other.tag == "Fruit") {
-		fruit += 1;
-		flavor.Eat();
-		flavor.ColorTransitionGood();
-		Destroy(other.gameObject);
-	}
-	
-	if( other.tag == "Grain") {
-		pc.incSpeed();
-		grain += 1;
-		flavor.Eat();
-		flavor.ColorTransitionGood();
-		Destroy(other.gameObject);
-	}
-	
-	if( other.tag == "Protein") {
-		pc.incJumpSpeed();
-		protein += 1;
-		flavor.Eat();
-		flavor.ColorTransitionGood();
-		Destroy(other.gameObject);
-	}
-	
-	if(other.tag == "BreakBlock"){
-		if(strength >= 3){
+		if(other.tag == "Water") {
+			water =  MAX_WATER;
+			waterAudio.Play();
+			flavor.ColorTransitionGood();
 			Destroy(other.gameObject);
 		}
+		
+		if(other.tag == "JunkFood") {
+			weight += 1;
+			junkfood += 1;
+			flavor.Eat();
+			flavor.ColorTransitionBad();
+			penalty.Play(30000);
+			Destroy(other.gameObject);
+		}
+		
+		if(other.tag == "Dairy") {
+			strength += 1;
+			dairy += 1;
+			flavor.Eat();
+			flavor.ColorTransitionGood();
+			Destroy(other.gameObject);
+		}
+		
+		if( other.tag == "Fruit") {
+			fruit += 1;
+			flavor.Eat();
+			flavor.ColorTransitionGood();
+			Destroy(other.gameObject);
+		}
+		
+		if( other.tag == "Grain") {
+			pc.incSpeed();
+			grain += 1;
+			flavor.Eat();
+			flavor.ColorTransitionGood();
+			Destroy(other.gameObject);
+		}
+		
+		if( other.tag == "Protein") {
+			pc.incJumpSpeed();
+			protein += 1;
+			flavor.Eat();
+			flavor.ColorTransitionGood();
+			Destroy(other.gameObject);
+		}
+		
+		if(other.tag == "BreakBlock"){
+			if(strength >= 3){
+				Destroy(other.gameObject);
+			}
+		}
+				
+		if( other.tag == "Protein" || other.tag == "Fruit" || other.tag == "Grain" || other.tag == "Dairy" || other.tag == "JunkFood")
+		{
+			var cloneParticle : GameObject;
+			cloneParticle = Instantiate(particle, transform.position, transform.rotation);
+			cloneParticle.particleSystem.Emit(3);
+			Destroy(cloneParticle,3);
+		}	
 	}
-			
-	if( other.tag == "Protein" || other.tag == "Fruit" || other.tag == "Grain" || other.tag == "Dairy" || other.tag == "JunkFood")
-	{
-		var cloneParticle : GameObject;
-		cloneParticle = Instantiate(particle, transform.position, transform.rotation);
-		cloneParticle.particleSystem.Emit(3);
-		Destroy(cloneParticle,3);
-	}	
 }
 
