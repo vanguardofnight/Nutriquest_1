@@ -47,7 +47,7 @@ public class Intro : MonoBehaviour {
 		newGame.text = "New game";
 		GUI.DrawTexture(new Rect (80.0f, 90.0f, 280.0f, 70.0f), yellowButton, ScaleMode.StretchToFill, true, 0.0f);
 		if (GUI.Button (new Rect (80.0f, 90.0f, 280.0f, 70.0f), newGame, menuStyle)) {
-//			control.connect();
+			StartCoroutine(NextScene ("lvl1"));
 		}
 
 		GUIContent levelSelect = new GUIContent ();

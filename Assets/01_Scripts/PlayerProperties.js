@@ -2,9 +2,11 @@
 private static var MAX_WATER: int = 15;
 private var curLevel = "";
 
-var texture : Texture;
-var tooltip : String;
-var style : GUIStyle;
+// GUIs
+private var originalWidth : float = 800.0f;
+private var originalHeight : float = 480.0f;
+private var titleStyle : GUIStyle = new GUIStyle();
+private var bgButton : Texture;
 
 var strength 		: int = 1;
 var weight 			: int = 1;
@@ -28,7 +30,6 @@ var score 			: int = 0;
 private var endTime : float;
 private var waterTimer : float = 2.0;
 
-var txtStyle : GUIStyle;
 // Timer for game play (1 second)
 private var gameEndTimer : float;
 private var maxGameTime : float;
@@ -57,6 +58,14 @@ function Start () {
 	if (curLevel == "lvl4") {
 		gameEndTimer = Time.time + maxGameTime;
 	}
+	
+	//GUIs
+	titleStyle.font = Resources.Load("Fonts/kenvector_future", Font);
+	titleStyle.fontSize = 25;
+	titleStyle.normal.textColor = Color (0, 0, 0, 1.0f);
+	titleStyle.alignment = TextAnchor.MiddleCenter;
+	
+	bgButton = Resources.Load("cloudy-sky-cartoon", Texture);
 }
 
 function Update () {
@@ -133,57 +142,61 @@ function Update () {
 }
 
 function OnGUI(){
-		if (curLevel == "lvl4") {
-			var txt = gameTimeTxt.ToString() + "seconds left";
-			var txtSize : Vector2 = GUI.skin.GetStyle("txtStyle").CalcSize(GUIContent(txt));
-			var txtRect : Rect = GUILayoutUtility.GetRect (txtSize.x, Mathf.Max(txtSize.y));
-			txtRect = Rect(txtRect.x + 4, txtRect.y, txtRect.width -8, txtRect.height);
-			
-			GUI.Label (
-				Rect(
-					(Screen.width - txtRect.width)*0.5,
-					30,
-					txtRect.width, txtRect.height+20), txt, txtStyle);
-		}
+	// Set matrix
+	var ratio : Vector2 = Vector2(Screen.width/originalWidth , Screen.height/originalHeight );
+	var guiMatrix : Matrix4x4 = Matrix4x4.identity;
+	guiMatrix.SetTRS(Vector3(1, 1, 1), Quaternion.identity, Vector3(ratio.x, ratio.y, 1));
+	GUI.matrix = guiMatrix;
+	
+	
+	// Do GUIs
+	if (curLevel == "lvl4") {
+		var txt = gameTimeTxt.ToString() + " seconds left";
+		GUI.Label ( Rect(0, 30, 800, 100), txt, titleStyle);
+	}
 
-    	//Application.LoadLevel(Application.loadedLevel);
-    	var gameoverText = "GAME OVER";
-    	if(gameover){
-		if(GUI.Button(Rect(0,0,1920,1200), GUIContent(gameoverText,texture, tooltip), style)){
+	if(gameover){
+		GUI.DrawTexture( Rect (0, 0, originalWidth, originalHeight), bgButton, ScaleMode.StretchToFill, true, 0.0f);
+		if(GUI.Button(Rect(0, 0, originalWidth, originalHeight), "Game Over", titleStyle)){
 			Application.LoadLevel(Application.loadedLevel);
+		}
+	}
+	
+	if(levelComplete){
+		GUI.DrawTexture( Rect (0, 0, originalWidth, originalHeight), bgButton, ScaleMode.StretchToFill, true, 0.0f);
+		var levelcompleteText = " CONGRATULATIONS!! \nYour Score: " + score;
+		if(GUI.Button(Rect(0, 0, originalWidth, originalHeight), levelcompleteText, titleStyle)){
+			switch (curLevel) {
+				case "lvl1":
+					Application.LoadLevel("lvl2");
+					break;
+				case "lvl2":
+					Application.LoadLevel("lvl3");
+					break;
+				case "lvl3":
+					Application.LoadLevel("lvl4");
+					break;
+				case "lvl4":
+					Application.LoadLevel("intro");
+					break;
+				default:
+					Application.LoadLevel("intro"); 
 			}
 		}
-		
-		if(levelComplete){
-			var levelcompleteText = " CONGRATULATIONS!! \nYour Score: " + score;
-			if(GUI.Button(Rect(0,0,1920,1200), GUIContent(levelcompleteText,texture, tooltip), style)){
-				switch (curLevel) {
-					case "lvl1":
-						Application.LoadLevel("lvl2");
-						break;
-					case "lvl2":
-						Application.LoadLevel("lvl3");
-						break;
-					case "lvl3":
-						Application.LoadLevel("lvl4");
-						break;
-					case "lvl4":
-						Application.LoadLevel("intro");
-						break;
-					default:
-						Application.LoadLevel("intro"); 
-						
-					}
-				}
-			}
+	}
+	
+	// Reset matrix
+	GUI.matrix = Matrix4x4.identity;
 }
+
 function OnTriggerEnter( other : Collider ) {
 	var pc = GetComponent( PlayerControl );
 	
 	if(other.tag == "Lava"){
-		  	gameover = true;
-			Destroy(gameObject.GetComponent(SpriteRenderer)); 
-		}
+	  	gameover = true;
+		// Destroy(gameObjecgamet.GetComponent(SpriteRenderer));
+	}
+	
 	if(other.tag == "Finish"){
 			levelComplete = true;
 	}
