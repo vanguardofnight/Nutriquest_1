@@ -1,10 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/01_Scripts/LvlSelect.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets (Mobile)/Scripts/Joystick.js">
     <Files>
-      <File FileName="Assets/01_Scripts/Intro.cs" Line="72" Column="19" />
-      <File FileName="Assets/01_Scripts/Settingsmenu.js" Line="68" Column="22" />
-      <File FileName="Assets/01_Scripts/LvlSelect.js" Line="60" Column="19" />
+      <File FileName="Assets/01_Scripts/Intro.cs" Line="50" Column="35" />
+      <File FileName="Assets/01_Scripts/Settingsmenu.js" Line="45" Column="2" />
+      <File FileName="Assets/01_Scripts/LvlSelect.js" Line="40" Column="2" />
+      <File FileName="Assets/01_Scripts/PlayerProperties.js" Line="160" Column="24" />
+      <File FileName="Assets/01_Scripts/FlavorScript.js" Line="22" Column="2" />
+      <File FileName="Assets/Standard Assets (Mobile)/Scripts/Joystick.js" Line="240" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
