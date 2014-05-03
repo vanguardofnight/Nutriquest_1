@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/01_Scripts/PlayerProperties.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/01_Scripts/BioHarnessController.js">
     <Files>
-      <File FileName="Assets/01_Scripts/Intro.cs" Line="20" Column="28" />
-      <File FileName="Assets/01_Scripts/BioHarnessController.js" Line="58" Column="15" />
-      <File FileName="Assets/01_Scripts/PlayerControl.js" Line="30" Column="29" />
-      <File FileName="Assets/01_Scripts/PlayerProperties.js" Line="76" Column="24" />
+      <File FileName="Assets/01_Scripts/BioHarnessController.js" Line="23" Column="18" />
+      <File FileName="Assets/01_Scripts/Intro.cs" Line="1" Column="1" />
+      <File FileName="Assets/01_Scripts/PlayerControl.js" Line="1" Column="1" />
+      <File FileName="Assets/01_Scripts/PlayerProperties.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

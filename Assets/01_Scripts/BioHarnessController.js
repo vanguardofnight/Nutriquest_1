@@ -72,8 +72,10 @@ function SetHeartRate(str : String) {
 }
 
 function SetRespirationRate(str : String) {
-	this.respirationRate = str;
-	Record ( str );
+	if (str != null) {
+		this.respirationRate = str;
+		Record ( str );
+	}
 }
 
 function SetSkinTemperature(str : String) {
