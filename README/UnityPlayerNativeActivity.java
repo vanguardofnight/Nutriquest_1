@@ -200,19 +200,20 @@ public class UnityPlayerNativeActivity extends NativeActivity {
     	public void handleMessage(Message msg) {
     		switch (msg.what) {
     			case HEART_RATE:
-		   			UnityPlayer.UnitySendMessage("BioHarness", "SetHeartRate", msg.getData().getString("HeartRate"));
+//		   			UnityPlayer.UnitySendMessage("BioHarness", "SetHeartRate", msg.getData().getString("HeartRate"));
 		   			break;
     			case RESPIRATION_RATE:
-    				UnityPlayer.UnitySendMessage("BioHarness", "SetRespirationRate", msg.getData().getString("RespirationRate"));
+    				if(msg.getData().getString("RespirationRate") != null)
+    					UnityPlayer.UnitySendMessage("BioHarness", "SetRespirationRate", msg.getData().getString("RespirationRate"));
     				break;
     			case SKIN_TEMPERATURE:
-    				UnityPlayer.UnitySendMessage("BioHarness", "SetSkinTemperature", msg.getData().getString("SkinTemperature"));
+//    				UnityPlayer.UnitySendMessage("BioHarness", "SetSkinTemperature", msg.getData().getString("SkinTemperature"));
     				break;
 		   		case POSTURE:
-		   			UnityPlayer.UnitySendMessage("BioHarness", "SetPosture", msg.getData().getString("Posture"));
+//		   			UnityPlayer.UnitySendMessage("BioHarness", "SetPosture", msg.getData().getString("Posture"));
 		   			break;
 		   		case PEAK_ACCLERATION:
-		   			UnityPlayer.UnitySendMessage("BioHarness", "SetPeakAcceleration",msg.getData().getString("PeakAcceleration"));
+//		   			UnityPlayer.UnitySendMessage("BioHarness", "SetPeakAcceleration",msg.getData().getString("PeakAcceleration"));
 		   			break;	
     		}
     	}
